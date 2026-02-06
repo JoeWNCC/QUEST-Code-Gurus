@@ -1906,12 +1906,159 @@ def cave4():
 # ========== RUINS ========== #
 # Ruins
 def ruins():
+    # variables we work with
+    global sword, has_map, rations, Rogue, Chef, Ally, Player_Name, sec, Scary_axe
+
     os.system('cls' if os.name == 'nt' else 'clear')
     print(utils.UnderLN("Ruins"))
     sleep(sec)
-    print("\nCOMING SOON!")
+    print("When you walk out of the cave exit, you are hit with a pleasant breeze. As your eyes adjust to the light, you\n"
+          "see before the great hill you stand on the ruins you've heard so much about just below.")
     sleep(sec)
+    print("It's bigger than you thought, spanning eight miles out where you can see a decrepit fortress in the distance.\n"
+          "You would hate to jump to conclusions, but that is likely where they took Ivar's daughter.")
+    sleep(sec)
+    if Rogue == 1:
+        print(f"\n{Ally}: I doubt I need to tell you this coming to this point, but I would keep my guard up if I was you.\n"
+              "There is too many places to hide and too many places to be ambushed. Keep your helm up though, looks like we're\n"
+              "nearing the end of this journey.")
+        sleep(sec)
+    print("\nGiven that summary, you begin your march down the steep slope and resume your march for the blacksmith's daughter.")
+    sleep(sec)
+    input("\nPress enter to continue: ")
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print("After a brief five minutes, you approach the face of the ruins. It's an archway into a collection of dilapidated stone\n"
+          "and bricks that's uncomfortably quiet. The surroundings although fallen apart, dwarf you in comparison.")
+    sleep(sec)
+    print("\nYou step under the grand archway, but before you can cross...")
+    sleep(sec)
+    print("Two giant halberds fall right before your face, stopping you in your tracks!")
+    sleep(sec)
+    print("Two huge figures, clad in plate of mythical proportions step from behind the opposite walls to block the path.")
+    sleep(sec)
+    print("\nKnight Sceád: NONE SHALL PASS WITHOUT ORDER OF OUR LORD. TO LINGER IS TO MEET YOUR DEMISE.")
+    sleep(sec)
+    print("\nKnight Fær: AS THE GUARDS SCEÁD AND FÆR, WE WILL NOT TOLERATE ANY POTENTIAL THREAT.")
+    sleep(sec)
+    print("\n...")
+    sleep(sec)
+    print("This is a pickle...")
+    sleep(sec)
+    print("With daunting oppression like this, it's very hard to negotiate charismatically, or even less practical, with battle.\n"
+          "You know for a fact, however, that you want to see this quest through, especially with what you've gone through.")
+    sleep(sec)
+    input("\nPress anything to continue: ")
+    os.system('cls' if os.name == 'nt' else 'clear')
+    # Pull up a menu for how you'll handle the two knights and give user a choice
+    while True:
+        # Menus
+        if Scary_axe == 1 or sword == 1:
+            print("   1. Sneak through [CHANCE]\n"
+                  "   2. Find another way in\n"
+                  "   3. Fight\n"
+                  "   4. Bribe [-WEAPON]\n")
+        else:
+            print("   1. Sneak through [CHANCE]\n"
+                  "   2. Find another way in\n"
+                  "   3. Fight\n")
+        cho = input("How do you proceed?: ")
+        # Sneak through main
+        if cho == 1:
+            print("\nYou figure the best way to get past the charisma or battle differences is to not be seen... hopefully.")
+            sleep(sec)
+            chance = chance_50()
+            print("Forgetting about how you're standing right in front of the knights, you turn around slowly and walk away. You are far\n"
+                  "from gone, however, as when you notice they lose sight, you hold your breath and make your move.")
+            if chance == 1:
+                # Success
+                print("")
+                print(sec)
+                input("\nPress enter to proceed: ")
+                ruins_2()
+                break
+            else:
+                # Failure
+                print("")
+                sleep(sec)
+                input("\nPress enter to proceed: ")
+                ruins_fight()
+                break
+        # Find another way
+        elif cho == 2:
+            print("\nYou think that the best way forward is improvising another path, allowing you to avoid dealing with the knights\n"
+                  "altogether. Even if you run into problems, they shouldn't be massive and armored in the very least.")
+            sleep(sec)
+            input("\nPress enter to proceed: ")
+            ruins_alt()
+            break
+        # Fight (Very risky)
+        elif cho == 3:
+            if Rogue == 1:
+                print(f"\n{Ally}: Are you mad or do you have a death wish!? Consider thinking again, those guys outnumber and outsize you!")
+            cho2 = input("\nThis is what you want to do? [Y/N]: ").lower()
+            if cho2 == "y":
+                print("\nYou breathe in slowly, and then breathe out. You draw your weapon and bracce yourself for the hurt.")
+                sleep(sec)
+                print("\nKnight Fær: PREPARE FOR TROUBLE.")
+                sleep(1)
+                print("Knight Sceád: AND MAKE IT DOUBLE.")
+                sleep(sec)
+                input("\nPress enter to proceed: ")
+                ruins_fight()
+                break
+            else:
+                print(f"\n{Ally} is right. There is a fine line between bravery and foolishness.")
+                continue
+        # Bribery
+        elif cho == 4:
+            if Scary_axe == 1 and sword == 1:
+                print("\nYou have accumulated quite the collection of armaments, that being the lumberjack's axe and the big sword\n"
+                      "you scored at Drabtown. At this point, you could probably afford to let one go.")
+                sleep(sec)
+            elif Scary_axe == 1 and sword == 0:
+                print("\nSeeing those guys in with metal from head to toe, you wonder if you could bribe them with your axe you got\n"
+                      "from the lumberjack.")
+                sleep(sec)
+            elif sword == 1 and Scary_axe == 0:
+                print("\nYou pull out the big sword you've been lugging on your back and wonder if you can't tempt them in exchange\n"
+                      "for passage.")
+                sleep(sec)
+            else:
+                print("\nNo, you can't barter something you don't have. Try finding the axe!\n")
+                continue
+            wpn_cho = input("\nDo you wish to attempt bribery with your weapon? [Y/N]: ").lower()
+            if wpn_cho == "y":
+                print("\nLet's do this. Hopefully we won't need a weapon for the beast, unfortuantely thats likely wishful thinking.")
+                sleep(sec)
+                # Knight Dialogue portion + weapon variable decrease here
+                ruins_2()
+                break
+            else:
+                print("\nNah, nevermind. We'll need that for this upcoming beast that took Ivar's daughter!")
+                sleep(sec)
+                continue
+        # Any other exception
+        else:
+            # Handle error
+            print("\n! Please choose an number between the given range !\n")
+            continue
     os._exit(200)
+
+# Ruins continued
+def ruins_2():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(utils.UnderLN("Ruins Second Portion"))
+    print("\nCOMING SOON!")
+# Fight the knights
+def ruins_fight():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(utils.UnderLN("Ruins Knight Fight"))
+    print("\nCOMING SOON!")
+# Find a new path
+def ruins_alt():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(utils.UnderLN("Ruins Alt Path"))
+    print("\nCOMING SOON!")
 
 # ========== SANCTUM ========== #
 # Sanctum
