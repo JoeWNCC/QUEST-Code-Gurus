@@ -1680,11 +1680,11 @@ def caveFight():
         if chance == 1:
             print("\nCHINK!")
             sleep(sec)
-            if lives > 1:
+            if lives > 0:
                 lives -= 1
                 print(f"\nThe bastard nicked you in several places! [HEALTH REMAINING: {lives}/3]")
                 sleep(sec)
-            elif lives == 0:
+            elif lives <= 0:
                 print("\nTwo many cuts... You struggle to keep yourself upright.")
                 sleep(sec)
                 print("\nWhen you meet the evil creatures eye sockets, he glares back and smirks, no remorse in what he's about to do.")
@@ -1767,9 +1767,10 @@ def cave1():
             if chance == 4:
                 caveFight()
                 caveWrong()
+                return
             else:
                 caveWrong()
-                pass
+                return
         if choice == "3":
             PathChoices[0] = "Right"
             chance = chance_75()
@@ -1803,9 +1804,10 @@ def cave2():
             if chance == 4:
                 caveFight()
                 caveWrong()
+                return
             else:
                 caveWrong()
-                pass
+                return
         if choice == "2":
             PathChoices[1] = "Straight"
             chance = chance_75()
@@ -1838,9 +1840,10 @@ def cave3():
             if chance == 4:
                 caveFight()
                 caveWrong()
+                return
             else:
                 caveWrong()
-                pass
+                return
         if choice == "1":
             PathChoices[2] = "Left"
             chance = chance_75()
@@ -1873,9 +1876,10 @@ def cave4():
             if chance == 4:
                 caveFight()
                 caveWrong()
+                return
             else:
                 caveWrong()
-                pass
+                return
         if choice == "1":
             PathChoices[3] = "Left"
             chance = chance_75()
@@ -2119,7 +2123,7 @@ def ruins_fight():
     Scaed = 2
     Faer = 2
     defense = 0
-    print(f"\n- = [ FIGHT ] = -")
+    print("\n- = [ FIGHT ] = -")
     if Rogue == 1:
         sleep(sec)
         print(f"{Ally}: Hey, you'll only be able to take two hits from these guys in your prime state, stay alive!\n")
@@ -2293,7 +2297,7 @@ def ruins_fight():
         if Faer != 0:
             print("\nFær drags their halberd across the ground and swipes horizontally towards you!")
             sleep(sec)
-            print("\n  Swish!  ")
+            print("\n  SWISH!  ")
             sleep(sec)
             dodge = chance_50()
             if defense == 1:
@@ -2361,6 +2365,7 @@ def ruins_fight():
                 sleep(sec)
                 print(f"{Ally}: If one thing is for sure, you keep my adrenaline a-pumpin'. We'll have stories to tell for generations!")
                 sleep(sec)
+            print("\n- = [ BATTLE WON ] = -")
             if Werewolf == True:
                 print("\nAfter a breif moment, you hear something metal dragging across the ground. It's your werewolf friend\n"
                       "with the elbow guard of one of the knights you felled.")
@@ -2381,7 +2386,6 @@ def ruins_fight():
             input("\nPress enter to proceed: ")
             break
     ruins_2()
-                
 
 # Find a new path
 def ruins_alt():
