@@ -652,8 +652,8 @@ def wood_woods_night():
     print("\nGiven it's night, it might not be a bad idea to light a torch. You could use your neck scarf\n"
           "to add kindling to the stick... but you would lose it.")
     # Make a torch spending your only neck scarf
-    choice = int(input("\nMake and set a torch alight? [1. Yes / 2. No ][ Uses Neck Scarf]: "))
-    if choice == 1:
+    choice = input("\nMake and set a torch alight? [1. Yes / 2. No ][ Uses Neck Scarf]: ")
+    if choice == "y" or choice == "1":
         # TORCH ROUTE
         Neck_Cloth = 0
         Stick -= 1
