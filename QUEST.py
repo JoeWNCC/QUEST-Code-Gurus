@@ -27,18 +27,24 @@ Stick = 0
 Torch = 0
 Neck_Cloth = 1 # Spend it to make a torch when you have a stick
 rations = 0
+shield = 0
 
 # Allies/Hires
 Rogue = 0
 Chef = 0
 Werewolf = False
 # Do not change the initial string of Ally
+# Ally is responsible for the name of your hired companion
 Ally = "To be decided"
 
 # Event Variables
 Focus = False
 chance = 0
 lives = 3
+lives_max = 3
+if shield == 1:
+    lives = 5
+    lives_max = 5
 enemy_health = 0
 # PathChoices keeps track of which paths were correct in the cave IF you have the rogue.
 # Combo is Right, Straight, Left, Left
@@ -1907,7 +1913,7 @@ def cave4():
 # Ruins
 def ruins():
     # variables we work with
-    global sword, has_map, rations, Rogue, Chef, Ally, Player_Name, sec, Scary_axe
+    global sword, rations, Rogue, Chef, Ally, Player_Name, sec, Scary_axe
 
     os.system('cls' if os.name == 'nt' else 'clear')
     print(utils.UnderLN("Ruins"))
@@ -1923,7 +1929,7 @@ def ruins():
               "There is too many places to hide and too many places to be ambushed. Keep your helm up though, looks like we're\n"
               "nearing the end of this journey.")
         sleep(sec)
-    print("\nGiven that summary, you begin your march down the steep slope and resume your march for the blacksmith's daughter.")
+    print("\nGiven that summary, you begin running down the steep slope to resume your march for the blacksmith's daughter.")
     sleep(sec)
     input("\nPress enter to continue: ")
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -1963,7 +1969,7 @@ def ruins():
                   "   3. Fight\n")
         cho = input("How do you proceed?: ")
         # Sneak through main
-        if cho == 1:
+        if cho == "1":
             print("\nYou figure the best way to get past the charisma or battle differences is to not be seen... hopefully.")
             sleep(sec)
             chance = chance_50()
@@ -1971,33 +1977,54 @@ def ruins():
                   "from gone, however, as when you notice they lose sight, you hold your breath and make your move.")
             if chance == 1:
                 # Success
-                print("")
-                print(sec)
+                print("\nCareful precision in your foot placement and concious handle of your noisy metal armor allow you to slip past the\n"
+                      "great vigilance of the great guards after a great climb of the side walls of the massive bricks.")
+                sleep(sec)
+                if Rogue == 1:
+                    print(f"\n{Ally}: Way to go! You ought to drop the armor and join the rogues guild with me seeing slick moves\n" 
+                          "like that!")
+                    sleep(sec)
                 input("\nPress enter to proceed: ")
                 ruins_2()
                 break
             else:
                 # Failure
-                print("")
+                print("\nYou manage to climb to the top of the side wall where they can't see you, all is well.")
+                sleep(sec)
+                print("\nSuddenly, out of the blue, you misplaced your foot and fell off the wall. The thunk that insued was loud, almost like a\n"
+                      "bell in your armor.")
+                sleep(sec)
+                print("\nYou pick yourself up off the ground slowly and look around.")
+                sleep(sec)
+                print("\n... Oh no...")
+                sleep(sec)
+                print("\nYou are already surrounded by the guards.")
+                sleep(sec)
+                print("\nKnight Fær: YOU HAD YOUR WARNING; YOUR ONLY CHANCE.")
+                sleep(sec)
+                print("\nKnight Sceád: NOW TIME IS NIGH, TO REST WITH THE PLANTS.")
                 sleep(sec)
                 input("\nPress enter to proceed: ")
                 ruins_fight()
                 break
         # Find another way
-        elif cho == 2:
+        elif cho == "2":
             print("\nYou think that the best way forward is improvising another path, allowing you to avoid dealing with the knights\n"
                   "altogether. Even if you run into problems, they shouldn't be massive and armored in the very least.")
+            sleep(sec)
+            print("\nRather than taking the path straight to the castle, you follow the path along the wall of the ruins and hold out\n"
+                  "hope for good fortune and favor.")
             sleep(sec)
             input("\nPress enter to proceed: ")
             ruins_alt()
             break
         # Fight (Very risky)
-        elif cho == 3:
+        elif cho == "3":
             if Rogue == 1:
                 print(f"\n{Ally}: Are you mad or do you have a death wish!? Consider thinking again, those guys outnumber and outsize you!")
             cho2 = input("\nThis is what you want to do? [Y/N]: ").lower()
             if cho2 == "y":
-                print("\nYou breathe in slowly, and then breathe out. You draw your weapon and bracce yourself for the hurt.")
+                print("\nYou breathe in slowly, and then breathe out. You draw your weapon and brace yourself for the hurt.")
                 sleep(sec)
                 print("\nKnight Fær: PREPARE FOR TROUBLE.")
                 sleep(1)
@@ -2010,18 +2037,31 @@ def ruins():
                 print(f"\n{Ally} is right. There is a fine line between bravery and foolishness.")
                 continue
         # Bribery
-        elif cho == 4:
+        elif cho == "4":
             if Scary_axe == 1 and sword == 1:
                 print("\nYou have accumulated quite the collection of armaments, that being the lumberjack's axe and the big sword\n"
                       "you scored at Drabtown. At this point, you could probably afford to let one go.")
+                trd_wpn = input("\n 1. Sword\n 2. Scary Axe\nWhich weapon will you part with? [1/2]: ")
+                # Part with sword
+                if trd_wpn == "1":
+                    print("\nLet's keep our axe, looks more intimidating anyway.")
+                    sleep(sec)
+                    trd_wpn = 1
+                # Part with axe
+                elif trd_wpn == "2":
+                    print("\nLet's keep our sword, you're more familiar with how to use it anyway.")
+                    sleep(sec)
+                    trd_wpn = 2
                 sleep(sec)
             elif Scary_axe == 1 and sword == 0:
                 print("\nSeeing those guys in with metal from head to toe, you wonder if you could bribe them with your axe you got\n"
                       "from the lumberjack.")
+                trd_wpn = 2
                 sleep(sec)
             elif sword == 1 and Scary_axe == 0:
                 print("\nYou pull out the big sword you've been lugging on your back and wonder if you can't tempt them in exchange\n"
                       "for passage.")
+                trd_wpn = 1
                 sleep(sec)
             else:
                 print("\nNo, you can't barter something you don't have. Try finding the axe!\n")
@@ -2031,6 +2071,28 @@ def ruins():
                 print("\nLet's do this. Hopefully we won't need a weapon for the beast, unfortuantely thats likely wishful thinking.")
                 sleep(sec)
                 # Knight Dialogue portion + weapon variable decrease here
+                print("\nYou walk back over to the knights and tap on their boot, holding your gift high above your head.")
+                sleep(sec)
+                print("\nKnight Sceád: UHH, WHAT IS THIS LITTLE MAN... A GIFT? NOT JUST ANY GIFT, A MINIATURE WEAPON! PERFECT FOR MY\n"
+                      "LITTLE COLLECTION.")
+                sleep(sec)
+                print("\nKnight Sceád: NOW I'M NOT WITHOUT GRATITUDE, SO WHAT DO YOU WANT IN EXCHANGE?")
+                sleep(sec)
+                print("\nYou point towards the castle and gesture to your empty pockets.")
+                sleep(sec)
+                print("\nKnight Fær: SCEÁD, DON'T BE A BUCKET BRAIN, THIS IS OBVIOUSLY BRIBERY.")
+                sleep(sec)
+                print("\nKnight Sceád: ALAS, IT IS FINE. WITHOUT A WEAPON DO YOU EVEN THINK HE'D STAND A CHANCE AGAINST HIM?")
+                sleep(sec)
+                print("\nKnight Fær: HMMPH... YOU MAKE A GOOD POINT, BUT I DID NOT TAKE PART IN THIS DEAL... PROCEED LITTLE MAN.")
+                sleep(sec)
+                print("\nSweet Neptune, it worked! The tower is just up ahead now!")
+                if trd_wpn == 1:
+                    sword = 0
+                elif trd_wpn == 2:
+                    Scary_axe == 0
+                sleep(sec)
+                input("\nPress enter to proceed: ")
                 ruins_2()
                 break
             else:
@@ -2042,18 +2104,285 @@ def ruins():
             # Handle error
             print("\n! Please choose an number between the given range !\n")
             continue
-    os._exit(200)
+    return sword, Scary_axe
 
 # Ruins continued
 def ruins_2():
     os.system('cls' if os.name == 'nt' else 'clear')
     print(utils.UnderLN("Ruins Second Portion"))
     print("\nCOMING SOON!")
+
 # Fight the knights
 def ruins_fight():
+    global sword, Scary_axe, rations, Chef, Rogue, Ally, Player_Name, sec, Stick, lives, lives_max, Werewolf
     os.system('cls' if os.name == 'nt' else 'clear')
-    print(utils.UnderLN("Ruins Knight Fight"))
-    print("\nCOMING SOON!")
+    Scaed = 2
+    Faer = 2
+    defense = 0
+    print(f"\n- = [ FIGHT ] = -")
+    if Rogue == 1:
+        sleep(sec)
+        print(f"{Ally}: Hey, you'll only be able to take two hits from these guys in your prime state, stay alive!\n")
+    sleep(sec)
+    # ========== FIGHT LOOP ============ #
+    while True:
+        # Reset status
+        defense = 0
+        # === YOUR TURN === #
+        if Chef == 1:
+            action = input(f"\nYOUR HEALTH: [{lives}]\n    [1. Attack   ]\n    [2. Defend   ]\n    [3. Heal (Tonio)]\nMake an action: ")
+        else:
+            action = input(f"\nYOUR HEALTH: [{lives}]\n    [1. Attack   ]\n    [2. Defend   ]\nMake an action: ")
+        # ATTACK
+        if action == "1":
+            print("You took a swing at the hulking guard.")
+            sleep(sec)
+            chance = chance_75()
+            chance_wpn = chance_50()
+            if chance == 1:
+                # Failure
+                print("You struck his plated armor; your blade was repelled!")
+                sleep(sec)
+            elif chance == 4 or chance_wpn == 1:
+                # Critical Success
+                print("\nYou managed to sink your blade through a tight crevass between his chest armor and immediately felled this\n"
+                      "champion of the gate!")
+                sleep(sec)
+                if Scaed == 0:
+                    print("\nKnight Fær: AT LONG LAST... OUR LORD HAS MET HIS MATCH...")
+                    sleep(sec)
+                    print("\nThe final knight has fallen.")
+                    Faer = 0
+                    sleep(sec)
+                else:
+                    print("\nKnight Sceád: MAYBE I- URK... GRAVELY UNDERESTIMATED YOU, SMALL MAN...")
+                    sleep(sec)
+                    print("\nWith a mighty crash, the giant was down.")
+                    Scaed = 0
+                    sleep(sec)
+            else:
+                # Success
+                print("You land a strike between the armor of the knight's leg!")
+                sleep(sec)
+                if Scaed == 0:
+                    Faer -= 1
+                    if Faer == 0:
+                        print("\nKnight Fær: AT LONG LAST... OUR LORD HAS MET HIS MATCH...")
+                        sleep(sec)
+                        print("\nThe final knight has fallen.")
+                        Faer = 0
+                        sleep(sec)
+                else:
+                    Scaed -= 1
+                    if Scaed == 0:
+                        print("\nKnight Sceád: MAYBE I- URK... GRAVELY UNDERESTIMATED YOU, SMALL MAN...")
+                        sleep(sec)
+                        print("\nWith a mighty crash, the giant was down.")
+                        Scaed = 0
+                        sleep(sec)
+
+        # DEFEND
+        elif action == "2":
+            # This will be pretty practical if you have the werewolf, as he will always attack.
+            print("\nYou collect yourself and enter a defensive stance")
+            sleep(sec)
+            defense = 1
+            print("! Your likely hood of avoiding an attack has increased !")
+            sleep(sec)
+
+        # HEAL (IF TONIO IS YOUR ALLY)
+        elif action == "3" and Chef == 1 and lives < 3:
+            print("\nTonio scrambles to your location!")
+            sleep(sec)
+            print(f"\n{Ally}: Knight Guy! Keep standing tall!")
+            sleep(sec)
+            if rations > 0:
+                rations -= 1
+                lives = 3
+                print(f"RATIONS: {rations}")
+            else:
+                lives += 1
+            print(f"A fast-acting herbal tonic restores you to your senses. [HEALTH {lives}/3]")
+            sleep(sec)
+        
+        # Input Error
+        else:
+            print("\n! Invalid input !\n")
+            continue
+
+        # === WEREWOLF TURN === #
+        if Werewolf == True:
+            print("\nYour werewolf companion jumps into the fray and lunges toward the tall guard fearlessly!")
+            sleep(sec)
+            were_chance = chance_75()
+            if were_chance == 1:
+                # Failure
+                print("\nUnfortuantely, the tall guard steps out of the way just in time and your friend misses!")
+                sleep(sec)
+            else:
+                # Success
+                print("\nHe latches on to the knights leg and rips off layers of armor!")
+                sleep(sec)
+                if Scaed == 0:
+                    Faer -= 1
+                    if Faer == 0:
+                        print("\nKnight Fær: AT LONG LAST... OUR LORD HAS MET HIS MATCH...")
+                        sleep(sec)
+                        print("\nThe final knight has fallen.")
+                        Faer = 0
+                        sleep(sec)
+                else:
+                    Scaed -= 1
+                    if Scaed == 0:
+                        print("\nKnight Sceád: MAYBE I- URK... GRAVELY UNDERESTIMATED YOU, SMALL MAN...")
+                        sleep(sec)
+                        print("\nWith a mighty crash, the giant was down.")
+                        Scaed = 0
+                        sleep(sec)
+
+        # === GUARDS' TURN === #
+        # SCAED
+        if Scaed != 0:
+            print("\nSceád raises their halberd skyward, and then strikes down where your are standing!")
+            sleep(sec)
+            print("\n  CRASH!  ")
+            sleep(sec)
+            dodge = chance_50()
+            if defense == 1:
+                # IF YOU CHOSE DEFEND PRIOR TO THIS
+                defend = chance_75()
+                if defend == 1:
+                    # Failure
+                    print("\nDespite your defense stance, your guard was collapsed and you were struck to the earth!")
+                    sleep(sec)
+                    lives -= 1
+                    if lives == 0:
+                        print("\nThe world is spinning... You can't breathe...")
+                        sleep(sec)
+                        print("\nYou can't fight your way out, when the knight grabs you by the ankle and throws you far, far away\n" \
+                        "from the castle. You were never seen in this land again...")
+                        sleep(sec)
+                        input("\nPress enter to proceed: ")
+                        game_over()
+                        break
+                else:
+                    # Success
+                    print("\nYou slipped past the polearm crashing down, barely avoiding being planted into the ground!")
+                    sleep(sec)
+            else:
+                if dodge == 1:
+                    # Failure
+                    print("\nYou were caught with your gaurd open and promptly forced to the ground!")
+                    sleep(sec)
+                    lives -= 1
+                    if lives == 0:
+                        print("\nThe world is spinning... You can't breathe...")
+                        sleep(sec)
+                        print("\nYou can't fight your way out, when the knight grabs you by the ankle and throws you far, far away\n" \
+                        "from the castle. You were never seen in this land again...")
+                        sleep(sec)
+                        input("\nPress enter to proceed: ")
+                        game_over()
+                        break
+                else:
+                    # Success
+                    print("\nYou slipped past the polearm crashing down, barely avoiding being planted into the ground!")
+                    sleep(sec)
+        
+        # FAER
+        if Faer != 0:
+            print("\nFær drags their halberd across the ground and swipes horizontally towards you!")
+            sleep(sec)
+            print("\n  Swish!  ")
+            sleep(sec)
+            dodge = chance_50()
+            if defense == 1:
+                # IF YOU CHOSE DEFEND PRIOR TO THIS
+                defend = chance_75()
+                if defend == 1:
+                    # Failure
+                    print("\nDespite your guard, you were struck by the sweeping attack and forced away!")
+                    sleep(sec)
+                    lives -= 1
+                    if lives <= 0:
+                        print("\nYou're lying on your back and your body won't let you up...")
+                        sleep(sec)
+                        print("When Fær approaches the place you lay, they lean over and ask you something...")
+                        sleep(sec)
+                        print("\nKnight Fær: WHAT IS YOUR NAME, LITTLE MAN?")
+                        sleep(sec)
+                        print("\nYou manage to get utter with your final breath.")
+                        sleep(sec)
+                        print(f"\nKnight Fær: REST WELL ON THIS HILL OF CHAMPIONS, {Player_Name}.")
+                        sleep(sec)
+                        print("\nYou promptly lost conciousness...")
+                        sleep(sec)
+                        input("\nPress enter to proceed: ")
+                        game_over()
+                        break
+                    else:
+                        # Success
+                        print("\nYou slipped past the polearm crashing down, barely avoiding being planted into the ground!")
+                        sleep(sec)
+            else:
+                if dodge == 1:
+                    # Failure
+                    print("\nYou were caught with your gaurd open and promptly forced to the ground!")
+                    sleep(sec)
+                    lives -= 2
+                    if lives <= 0:
+                        print("\nYou're lying on your back and your body won't let you up...")
+                        sleep(sec)
+                        print("When Fær approaches the place you lay, they lean over and ask you something...")
+                        sleep(sec)
+                        print("\nKnight Fær: WHAT IS YOUR NAME, LITTLE MAN?")
+                        sleep(sec)
+                        print("\nYou manage to get utter with your final breath.")
+                        sleep(sec)
+                        print(f"\nKnight Fær: REST WELL ON THIS HILL OF CHAMPIONS, {Player_Name}.")
+                        sleep(sec)
+                        print("\nYou promptly lost conciousness...")
+                        sleep(sec)
+                        input("\nPress enter to proceed: ")
+                        game_over()
+                        break
+                    else:
+                        # Success
+                        print("\nYou slipped past the polearm crashing down, barely avoiding being planted into the ground!")
+                        sleep(sec)
+
+        # === CHECK BATTLE STATUS === #
+        # If both guards are defeated
+        if Scaed == 0 and Faer == 0:
+            print("\nBy the might of your weapon, or some stroke of luck, you managed to fell the two guards.")
+            sleep(sec)
+            if Chef == 1:
+                print(f"{Ally}: Mr. {Player_Name} Knight Guy, I'm not sure how many of those fights I can take...")
+                sleep(sec)
+                print(f"{Ally}: If one thing is for sure, you keep my adrenaline a-pumpin'. We'll have stories to tell for generations!")
+                sleep(sec)
+            if Werewolf == True:
+                print("\nAfter a breif moment, you hear something metal dragging across the ground. It's your werewolf friend\n"
+                      "with the elbow guard of one of the knights you felled.")
+                sleep(sec)
+                print("\nhe drops it at your feet and urges you to inspect it.")
+                sleep(sec)
+                print("\nIn examining it, you deduce that it's perfect size for a shield! Given the towering foes, proper defense feels\n"
+                      "like a miracle!")
+                sleep(sec)
+                print("\n You got the SHEILD!")
+                shield = 1
+                lives_max = 5
+                lives += 2
+                print("! Maximum Health Increased to 5 !")
+                sleep(sec)
+            print("\nWasting no time, you make your move through the archway, this time uninterrupted, and B-line straight to the castle.")
+            sleep(sec)
+            input("\nPress enter to proceed: ")
+            break
+    ruins_2()
+                
+
 # Find a new path
 def ruins_alt():
     os.system('cls' if os.name == 'nt' else 'clear')
