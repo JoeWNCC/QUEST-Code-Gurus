@@ -2246,7 +2246,7 @@ def ruins_fight():
 
         # === GUARDS' TURN === #
         # SCAED
-        if Scaed != 0:
+        if Scaed <= 0:
             print("\nSceád raises their halberd skyward, and then strikes down where your are standing!")
             sleep(sec)
             print("\n  CRASH!  ")
@@ -2294,7 +2294,7 @@ def ruins_fight():
                     sleep(sec)
         
         # FAER
-        if Faer != 0:
+        if Faer <= 0:
             print("\nFær drags their halberd across the ground and swipes horizontally towards you!")
             sleep(sec)
             print("\n  SWISH!  ")
@@ -2350,10 +2350,10 @@ def ruins_fight():
                         input("\nPress enter to proceed: ")
                         game_over()
                         break
-                    else:
-                        # Success
-                        print("\nYou slipped past the polearm crashing down, barely avoiding being planted into the ground!")
-                        sleep(sec)
+                else:
+                    # Success
+                    print("\nYou slipped past the polearm crashing down, barely avoiding being planted into the ground!")
+                    sleep(sec)
 
         # === CHECK BATTLE STATUS === #
         # If both guards are defeated
