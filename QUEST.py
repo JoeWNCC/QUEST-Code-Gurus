@@ -469,10 +469,12 @@ def wood_woods_lumberjack():
         sleep(sec)
         print("\nYou begin to panick. In the breif moment of thought that you have, you...\n")
         sleep(sec)
-        if sword == 1:
-            choice4 = int(input("[1. or 2. Don't Fight / 3. Fight]: "))
-            if choice4 == 3:
-                # Draw your sword
+        # Menu Loop
+        while True:
+            choice4 = input("\n [1.           Run ]\n [2. Beg for mercy ]\n [3.         Fight ]\nWhat will you do: ")
+            # Draw your sword
+            if choice4 == "3":
+                enemy_health = 2
                 print("\nYou reach for your blade in a hurry and try to find a stance to fight.")
                 sleep(sec)
                 print("Without a chance to think, he swings his axe sideways!")
@@ -482,9 +484,13 @@ def wood_woods_lumberjack():
                     if chance == 1:
                         print("\nYou manage to duck quickly and strike the hulking man in the temple with the pommel of your sword.")
                         sleep(sec)
-                        print("He slides against the forest floor five feet behind you, out cold. You breathe a sigh of relief.")
-                        sleep(sec)
-                        break
+                        enemy_health -= 1
+                        if enemy_health <= 0:
+                            print("\nHe slides against the forest floor five feet behind you, out cold. You breathe a sigh of relief.")
+                            sleep(sec)
+                            break
+                        else:
+                            print("\nHe's not done! The man turns back around and barrels toward you!")
                     else:
                         print("\nWHACK!")
                         lives -= 1
@@ -497,62 +503,68 @@ def wood_woods_lumberjack():
                             sleep(sec)
                             print("\nBefore you could stop the brute, a strong punch bent through your armor and...\neverything went black...")
                             sleep(sec)
+                            input("Press enter to proceed")
                             game_over()
+                            break
                         else:
                             print("As you attempt to get up, he bounds toward you again!")
                             sleep(sec)
                             continue
+                        
+                    # if Chef is in your party
+                    try:
+                        if Chef == 1:
+                            print(f"\n{Ally}: Scary fight, sir knight, {Player_Name}, glad you made it in one piece...")
+                            print(f"\n{Ally}: Take this real quick! It's a salve, something my mama came up with!")
+                            if lives < 3:
+                                lives += 1
+                            print("\nIt's a hastily put together first-aid kit. Very convenient!")
+                            print(f"HEALTH REMAINING: {lives}/3")
+                    except:
+                        pass
+                    # if Rogue is in your party
+                    try:
+                        if Rogue == 1:
+                            print(f"\n{Ally}: Good fighting, {Player_Name}. As well as you did, I think this could have gone better...")
+                            print(f"{Ally}: As much as I loathe talking or trusting people, even I would try talking your way out sometimes.")
+                            print("You feel silly, but at least you've got something of a friend to give suggestions to.")
+                    except:
+                        pass
                     
-                # if Chef is in your party
-                try:
-                    if Chef == 1:
-                        print(f"\n{Ally}: Scary fight, sir knight, {Player_Name}, glad you made it in one piece...")
-                        print(f"\n{Ally}: Take this real quick! It's a salve, something my mama came up with!")
-                        if lives < 3:
-                            lives += 1
-                        print("\nIt's a hastily put together first-aid kit. Very convenient!")
-                        print(f"HEALTH REMAINING: {lives}/3")
-                except:
-                    pass
-                # if Rogue is in your party
-                try:
-                    if Rogue == 1:
-                        print(f"\n{Ally}: Good fighting, {Player_Name}. As well as you did, I think this could have gone better...")
-                        print(f"{Ally}: As much as I loathe talking or trusting people, even I would try talking your way out sometimes.")
-                        print("You feel silly, but at least you've got something of a friend to give suggestions to.")
-                except:
-                    pass
-                
-                choice5 = int(input("\nAfter your adrenaline finally settles, you see that he dropped his axe... Take it? [1. Yes / 2. No]: "))
-                if choice5 == 1:
-                    print("\nIt looks quite strong... Given your quest, you're sure something out there will forgive you for taking it.")
-                    Scary_axe = 1
-                    print("\nYou got the SCARY AXE!")
+                    choice5 = int(input("\nAfter your adrenaline finally settles, you see that he dropped his axe... Take it? [1. Yes / 2. No]: "))
+                    if choice5 == 1:
+                        print("\nIt looks quite strong... Given your quest, you're sure something out there will forgive you for taking it.")
+                        Scary_axe = 1
+                        print("\nYou got the SCARY AXE!")
+                        
+                    else:
+                        print("\nYou don't take what you don't absolutely need. You don't need this axe, he does.")
+                        print("Maybe you can make ammends after this is all over.")
                     
-                else:
-                    print("\nYou don't take what you don't absolutely need. You don't need this axe, he does.")
-                    print("Maybe you can make ammends after this is all over.")
+                    print("\nYou brush yourself off, stretch, and keep moving forward despite the ever approaching night.")
+                    wood_woods_night()
+                    return Scary_axe, lives
                 
-                print("\nYou brush yourself off, stretch, and keep moving forward despite the ever approaching night.")
-                wood_woods_night()
-                return Scary_axe, lives
-            
-        choice4 = int(input("[1. Run / 2. Beg for mercy]: "))
-        # Run away
-        if choice4 == 1:
-            print("\nFear seizes your heart and without a thought, you run in any direction that is away from the monster man.")
-            print("\nAfter running for until you couldn't hear his swearing anymore, you finally stop to breathe and recover from that sprint.")
-            print("\nYou then turn your head up and see that the cave is right before your eyes. You've heard that, although perilous, this"
-                  " is one of the better ways to get to the ruins. Why waste this opportunity perfectly placed in front of you?")
-            cave()
+            # Run away
+            if choice4 == "1":
+                print("\nFear seizes your heart and without a thought, you run in any direction that is away from the monster man.")
+                print("\nAfter running for until you couldn't hear his swearing anymore, you finally stop to breathe and recover from that sprint.")
+                print("\nYou then turn your head up and see that the cave is right before your eyes. You've heard that, although perilous, this"
+                    " is one of the better ways to get to the ruins. Why waste this opportunity perfectly placed in front of you?")
+                cave()
+                break
 
-        # Beg for mercy
-        elif choice4 == 2:
+            # Beg for mercy
+            elif choice4 == "2":
+                print("\nYou fall to the floor and curl up into a ball. You cry out to the man not to hurt you!")
+                print("\nLUMBERJACK: Oh geez, sorry about that! Ahem-")
+                wood_woods_lumberjack_intro()
+                break
             
-            print("\nYou fall to the floor and curl up into a ball. You cry out to the man not to hurt you!")
-            print("\nLUMBERJACK: Oh geez, sorry about that! Ahem-")
-            wood_woods_lumberjack_intro()
-        
+            # Exception Handling
+            else:
+                print("\n! Please choose a number from 1 to 3 !\n")
+                continue
     return lives
 
 # Meet the lumberjack
@@ -634,7 +646,7 @@ def wood_woods_night():
         print(f"DEBUG: sword={sword}, has_map={has_map}, rations={rations}, Rogue={Rogue}, Chef={Chef}, Lives={lives}")
         print("\n================= DEBUGGING =================\n")
     os.system('cls' if os.name == 'nt' else 'clear')
-    print(utils.UnderLN("\nWood Woods"))
+    print(utils.UnderLN("\nWood Woods Night"))
     sleep(sec)
     print("It's dark out. Very dark out, but nonetheless your spirits remain high. As far as you can see, it's just tall trees\n"
           "and ever-spanning hills. One of these directions leads to the cave you heard about. Supposedly, through the cave is the\n"
