@@ -482,15 +482,15 @@ def wood_woods_lumberjack():
                 while True:
                     chance = chance_50()
                     if chance == 1:
+                        print("He swings at you and...")
+                        sleep(sec)
                         print("\nYou manage to duck quickly and strike the hulking man in the temple with the pommel of your sword.")
                         sleep(sec)
                         enemy_health -= 1
-                        if enemy_health <= 0:
-                            print("\nHe slides against the forest floor five feet behind you, out cold. You breathe a sigh of relief.")
-                            sleep(sec)
-                            break
-                        else:
+                        if enemy_health > 0:
                             print("\nHe's not done! The man turns back around and barrels toward you!")
+                            sleep(sec)
+                            continue
                     else:
                         print("\nWHACK!")
                         lives -= 1
@@ -509,42 +509,56 @@ def wood_woods_lumberjack():
                         else:
                             print("As you attempt to get up, he bounds toward you again!")
                             sleep(sec)
-                            continue
+                    if enemy_health <= 0:
+                        print("\nHe slides against the forest floor five feet behind you, out cold. You breathe a sigh of relief.")
+                        sleep(sec)
+                        # if Chef is in your party
+                        try:
+                            if Chef == 1:
+                                print(f"\n{Ally}: Scary fight, sir knight, {Player_Name}, glad you made it in one piece...")
+                                sleep(sec)
+                                print(f"\n{Ally}: Take this real quick! It's a salve, something my mama came up with!")
+                                if lives < 3:
+                                    lives += 1
+                                sleep(sec)
+                                print("\nIt's a hastily put together first-aid kit. Very convenient!")
+                                sleep(sec)
+                                print(f"HEALTH: {lives}/3")
+                                sleep(sec)
+                        except:
+                            pass
+                        # if Rogue is in your party
+                        try:
+                            if Rogue == 1:
+                                print(f"\n{Ally}: Good fighting, {Player_Name}. As well as you did, I think this could have gone better...")
+                                sleep(sec)
+                                print(f"{Ally}: As much as I loathe talking or trusting people, even I would try talking your way out sometimes.")
+                                sleep(sec)
+                                print("You feel silly, but at least you've got something of a friend to give suggestions to.")
+                                sleep(sec)
+                        except:
+                            pass
                         
-                    # if Chef is in your party
-                    try:
-                        if Chef == 1:
-                            print(f"\n{Ally}: Scary fight, sir knight, {Player_Name}, glad you made it in one piece...")
-                            print(f"\n{Ally}: Take this real quick! It's a salve, something my mama came up with!")
-                            if lives < 3:
-                                lives += 1
-                            print("\nIt's a hastily put together first-aid kit. Very convenient!")
-                            print(f"HEALTH REMAINING: {lives}/3")
-                    except:
-                        pass
-                    # if Rogue is in your party
-                    try:
-                        if Rogue == 1:
-                            print(f"\n{Ally}: Good fighting, {Player_Name}. As well as you did, I think this could have gone better...")
-                            print(f"{Ally}: As much as I loathe talking or trusting people, even I would try talking your way out sometimes.")
-                            print("You feel silly, but at least you've got something of a friend to give suggestions to.")
-                    except:
-                        pass
-                    
-                    choice5 = int(input("\nAfter your adrenaline finally settles, you see that he dropped his axe... Take it? [1. Yes / 2. No]: "))
-                    if choice5 == 1:
-                        print("\nIt looks quite strong... Given your quest, you're sure something out there will forgive you for taking it.")
-                        Scary_axe = 1
-                        print("\nYou got the SCARY AXE!")
                         
-                    else:
-                        print("\nYou don't take what you don't absolutely need. You don't need this axe, he does.")
-                        print("Maybe you can make ammends after this is all over.")
-                    
-                    print("\nYou brush yourself off, stretch, and keep moving forward despite the ever approaching night.")
-                    wood_woods_night()
-                    return Scary_axe, lives
-                
+                        choice5 = input("\nAfter your adrenaline finally settles, you see that he dropped his axe... Take it? [1. Yes / 2. No]: ")
+                        if choice5 == "1":
+                            print("\nIt looks quite strong... Given your quest, you're sure something out there will forgive you for taking it.")
+                            sleep(sec)
+                            Scary_axe = 1
+                            print("\nYou got the SCARY AXE!")
+                            sleep(sec)
+                        else:
+                            print("\nYou don't take what you don't absolutely need. You don't need this axe, he does.")
+                            sleep(sec)
+                            print("Maybe you can make ammends after this is all over.")
+                            sleep(sec)
+                        
+                        print("\nYou brush yourself off, stretch, and keep moving forward despite the ever approaching night.")
+                        sleep(sec)
+                        input("Press enter to continue: ")
+                        wood_woods_night()
+                        break
+
             # Run away
             if choice4 == "1":
                 print("\nFear seizes your heart and without a thought, you run in any direction that is away from the monster man.")
