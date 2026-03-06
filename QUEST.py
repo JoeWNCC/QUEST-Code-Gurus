@@ -2153,7 +2153,7 @@ def ruins_fight():
     if Rogue == 1:
         sleep(sec)
         print(f"{Ally}: Hey, you'll only be able to take two hits from these guys in your prime state, stay alive!\n")
-    sleep(sec)
+
     # ========== FIGHT LOOP ============ #
     while True:
         # Reset status
@@ -2272,7 +2272,7 @@ def ruins_fight():
 
         # === GUARDS' TURN === #
         # SCAED
-        if Scaed <= 0:
+        if Scaed > 0:
             print("\nSceád raises their halberd skyward, and then strikes down where your are standing!")
             sleep(sec)
             print("\n  CRASH!  ")
@@ -2320,7 +2320,7 @@ def ruins_fight():
                     sleep(sec)
         
         # FAER
-        if Faer <= 0:
+        if Faer > 0:
             print("\nFær drags their halberd across the ground and swipes horizontally towards you!")
             sleep(sec)
             print("\n  SWISH!  ")
@@ -2383,7 +2383,7 @@ def ruins_fight():
 
         # === CHECK BATTLE STATUS === #
         # If both guards are defeated
-        if Scaed == 0 and Faer == 0:
+        if Scaed <= 0 and Faer <= 0:
             print("\nBy the might of your weapon, or some stroke of luck, you managed to fell the two guards.")
             sleep(sec)
             if Chef == 1:
@@ -2417,8 +2417,170 @@ def ruins_fight():
 def ruins_alt():
     os.system('cls' if os.name == 'nt' else 'clear')
     print(utils.UnderLN("Ruins Alt Path"))
-    print("\nCOMING SOON!")
+    sleep(sec)
+    print("\nYou're not sure where you are going. All you really can do is follow the walls and take the turns that bring\n" \
+          "you closer to the looming castle.")
+    sleep(sec)
+    print("\nSo far, its been a long hike to find anything worthwhile, but as the sun sinks below the horizon, you pass by\n" \
+          "a large door, which promptly stops you in your tracks.")
+    sleep(sec)
+    print("\nUpon approaching it, your breif examination of the door leads you to find a hand-shaped divot between the two\n" \
+          "giant slabs of stone.")
+    sleep(sec)
+    print("\nThis must imply it is some kind of contraption. With nothing to lose but daylight, you place your hand inside\n" \
+          "the hole.")
+    sleep(sec)
+    print("\nOn the other side, you can hear mechanisms work behind the doors and within the walls of this borderline labyrinth.")
+    sleep(sec)
+    print("\nSuddenly... A voice from an unidentifiable location envelopes the area.")
+    sleep(sec)
+    input("Press enter to proceed: ")
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print("\n???: To pass, one must answer the riddle of the wiser lords of this land...")
+    sleep(sec)
+    print("???: sayings from the harbingers of the future...")
+    sleep(sec)
+    print("???: Transient writings from the heralds of generation...")
+    sleep(sec)
+    print("\nThis sounds like it'll be quite advanced... You rack your head on the first ancient texts that come to your mind...\n"
+          "only to be met with this question.")
+    sleep(sec)
+    print("\n???: Why did the chicken cross the road...")
+    sleep(sec)
+    # === Start the riddling === #
+    # Sorry in advance... :(
 
+    # Conditional accumulatory variable for an event related to answering.
+    # This is the only place this is used.
+    fail_counter = 0
+    # Riddle 1
+    while True:
+        answer = input("\nWhat is your answer?: ").lower()
+        if "to get to the other side" in answer:
+            print("\n???: Correct... Next riddle...")
+            sleep(sec)
+            break
+        else:
+            print("\n???: Incorrect... Try again...")
+            fail_counter += 1
+            sleep(sec)
+            if fail_counter >= 3:
+                if Rogue == 1:
+                    print(f"\n{Ally}: {Player_Name}... Do I really need to say this?")
+                    sleep(sec)
+                    print(f"{Ally}: Ugh... Fine... to get to the other side...")
+                    sleep(sec)
+                    print("\n???: Correct... Next riddle...")
+                    sleep(sec)
+                    break
+                elif Chef == 1:
+                    print(f"\n{Ally}: {Player_Name}, I know this one, let me have a crack at it!")
+                    sleep(sec)
+                    print(f"{Ally}: Mr. Voice, it is, to get to the other side!")
+                    sleep(sec)
+                    print("\n???: Correct... Next riddle...")
+                    sleep(sec)
+                    break
+                else:
+                    print("\nAs you begin to think about it more, you remember the common saying about getting to the other side.")
+                    sleep(sec)
+                continue
+    # Riddle 2
+    print("\n???: What do you call someone who takes care of hens?")
+    sleep(sec)
+    fail_counter = 0
+    while True:
+        answer = input("\nWhat is your answer?: ").lower()
+        if "chicken tender" in answer:
+            print("\n???: Correct again... Next riddle...")
+            sleep(sec)
+            break
+        else:
+            print("\n???: Incorrect... Try again...")
+            fail_counter += 1
+            sleep(sec)
+            if fail_counter >= 3:
+                if Rogue == 1:
+                    print(f"\n{Ally}: ... Yeah okay...")
+                    sleep(sec)
+                    print(f"{Ally}: a chicken tender...")
+                    sleep(sec)
+                    print("\n???: Correct... Next riddle...")
+                    sleep(sec)
+                    break
+                elif Chef == 1:
+                    print(f"\n{Ally}: OH! I love this joke!")
+                    sleep(sec)
+                    print(f"{Ally}: A chicken tender!")
+                    sleep(sec)
+                    print("\n???: Correct again... Next riddle...")
+                    sleep(sec)
+                    break
+                else:
+                    print("\nAs you begin to think about it more, you find other words for a caregiver...\n"
+                          "You're stuck on the word, 'tender'.")
+                    sleep(sec)
+                continue
+    # Riddle 3
+    print("\n???: What's a pirate's favorite letter?")
+    sleep(sec)
+    fail_counter = 0
+    while True:
+        answer = input("\nWhat is your answer?: ").lower()
+        if "c" or "sea" in answer:
+            print("\n???: Final riddle is... Correct.")
+            sleep(sec)
+            break
+        else:
+            print("\n???: Incorrect... Try again...")
+            fail_counter += 1
+            sleep(sec)
+            if fail_counter >= 3:
+                if Rogue == 1:
+                    print(f"\n{Ally}: ... {Player_Name}, it's time to develop a sense of humor...")
+                    sleep(sec)
+                    print(f"{Ally}: You'd think it's 'R', but it's truly the 'C'...")
+                    sleep(sec)
+                    print("\n???: Final riddle is... Correct.")
+                    sleep(sec)
+                    break
+                elif Chef == 1:
+                    print(f"\n{Ally}: This is a classic from where I'm from!")
+                    sleep(sec)
+                    print(f"{Ally}: It's the 'C', not 'R'!")
+                    sleep(sec)
+                    print("\n???: Final riddle is... Correct.")
+                    sleep(sec)
+                    break
+                else:
+                    print("\nAs you begin to think about it more, Pirates typically say 'Arr', but what\n"
+                          "other letter in the alphabet could sound pirate-related?")
+                    sleep(sec)
+                continue
+    input("Press enter to proceed: ")
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print("\n???: You have proven yourself worthy of the humor of our lord... You may proceed to his highness...")
+    sleep(sec)
+    print("\nThe doors drop with a loud thud, and begin sliding slowly into the frame that held them together. The path opens before you.")
+    sleep(sec)
+    print("\nBefore you, by some miracle is a bridge leading directly to the castle. the entrance is plain for all to see!")
+    sleep(sec)
+    if Rogue == 1:
+        print(f"\n{Ally}: ... Of all things to defend the fortress with... Father-styled jokes?...")
+        sleep(sec)
+        print(f"{Ally}: You've got to be kidding me...")
+        sleep(sec)
+    if Chef == 1:
+        print(f"\n{Ally}: The chicken tender one gets me every time!")
+        sleep(sec)
+        print(f"{Ally}: If this is my sense o' humor, maybe I ought to start a family o' my own! Berate the kiddos with my own amazing jokes as\n"
+              "I cook for 'em!")
+        sleep(sec)
+    print("\nWasting no time, you begin jogging down the great bridge straight into the castle.")
+    sleep(sec)
+    input("Press enter to continue: ")
+    ruins_2()
+            
 # ========== SANCTUM ========== #
 # Sanctum
 def sanctum():

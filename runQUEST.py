@@ -10,6 +10,8 @@ import QUEST
 # below to a method from the QUEST library. The starting area is
 # QUEST.drab_town()
 
+
+
 # ! WARNING !
 # If you preset the ally status for Chef and Rogue, their names will
 # not show up properly
