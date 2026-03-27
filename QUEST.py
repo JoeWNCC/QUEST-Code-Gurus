@@ -2139,9 +2139,274 @@ def ruins():
 # Ruins continued
 def ruins_2():
     os.system('cls' if os.name == 'nt' else 'clear')
-    print(utils.UnderLN("Ruins Second Portion"))
-    print("\nCOMING SOON!")
+    sleep(sec)
+    print("After getting through the gate, before you is a bridge, innumeral miles long, but still within decent walking distance.\n"
+          "It's a straight shot to this castle with seemingly no challenge.")
+    sleep(sec)
+    print("\nLooks like you're nearing the end. Any vigor that might have been deminished is gathered once again. You begin jogging\n"
+          "down it with no hesitation.")
+    sleep(sec)
+    # === Ally Dialogue Time === #
+    # Chef
+    if Chef == 1:
+        print(f"\n{Ally}: Zoo-wee mama! We've come a long way since the start of our journey and finally, the castle is right before our eyes!\n")
+        sleep(sec)
+        print(f"\n{Ally}: I don't think I've got to know you as much as I could know you, Mr. Knight guy, let me ask you a-little something...")
+        sleep(sec)
+        print(f"\n{Ally}: What do you look like under all that shiny armor?")
+        sleep(sec)
+        # Answer loop
+        while True:
+            identity = input("\n [1.     A guy. ]\n [2.     A gal. ]\n [3. Not human. ]\n [4.      ... ]\nHow do you answe?: ")
+            # A guy
+            if identity == "1":
+                print(f"\n{Ally}: Ah yes, maybe this questions was too silly to ask. I can't imagine anyone else under that armor, but I wouldn't\n"
+                      "object to anyone else going on adventures, I mean, I'm a cook and I'm out here risking my life for a yummy leaf. Good greif!")
+                sleep(sec)
+                print("I can't imagine anyone else under that armor, but I wouldn't object to anyone else going on adventures, I mean, I'm a cook and\n"
+                      "I'm out here risking my life for a yummy leaf for my 'all-spice'. Good greif!")
+                sleep(sec)
+                break
+            # A gal
+            elif identity == "2": 
+                print(f"\n{Ally}: Really!? A woman out here swinging swords and tackling giants!? How inspirational! Adventuring really is for everyone!")
+                sleep(sec)
+                print(f"\n{Ally}: I should probably start callin' ya 'Knight Gal', rather than Knight Guy... Er- maybe you just look like a girl.")
+                sleep(sec)
+                print(f"\n{Ally}: Regardless, it's been a pleasure workin' with ya!")
+                sleep(sec)
+                break
+            # Not human
+            elif identity == "3":
+                print(f"\n{Ally}: Well, um... You're shaped human, but I guess I've never really seen ya. No pressure though, I'm just being curious.")
+                sleep(sec)
+                print(f"\n{Ally}: Do you have a good sense of smell, at least? I need a really good nose to find this forsaken herb; the final ingredient\n"
+                      "of my all-spice...")
+                sleep(sec)
+                print(f"\n{Ally}: If you can find it, you'll definitely be the first to try, I promise that, just grab the seeds too, will ya?")
+                sleep(sec)
+                break
+            # (No answer)
+            elif identity == "4":
+                print(f"\n{Ally}: ")
+                sleep(sec)
+                break
+            # EXCEPTION HANDLING
+            else:
+                print(f"\n{Ally}: Sorry, I saw a weird looking bird in the sky. What did you say?")
+                sleep(sec)
+                continue
+        print(f"After that question ends, you think to youself about who {Ally} is... You think about it for a bit.")
+        sleep(sec)
+        print(f"You get an idea. You tap on {Ally}'s shoulder and ask...")
+        sleep(sec)
+        # Question loop
+        while True:
+            question = input("\n [1.       Anything you like besides cooking? ]\n [2. PLEASE tell me what this 'All-Spice' is! ]")
+            # Likes besides cooking
+            if question == "1":
+                print(f"\n{Ally}: Hmmm... I love cooking, but if I were to never touch cookware again, I would be SUPER invested in\n"
+                      "playing instruments, such as the cello. It's a shame no one keeps them around anywhere I could play them.")
+                sleep(sec)
+                print(f"\n{Ally}: Let me know if you see ANY STRINGED INSTRUMENT anywhere!")
+                sleep(sec)
+                break
+            # What is the 'all-spice'
+            elif question == "2":
+                if identity == "3" or "2" or "1":
+                    print(f"\n{Ally}: Ok, since you were honest with me about MY burning question, I'll be honest too, since we've\n"
+                          "survived this far..")
+                    sleep(sec)
+                    print(f"\n{Ally}: This all-spice has a name. It's leaves are a vibrant yellow, serrated pattern of the edges, and\n"
+                         "when ground up, has the sweetest aroma you've ever smelled.")
+                    sleep(sec)
+                    print(f"\n{Ally}: You'll never need sugar or cocoa again- or so the legend goes... I know it's real though! You have to believe me!")
+                    break
+                else:
+                    print(f"\n{Ally}: You didn't reveal your secret, so I won't reveal mine. No hard feelings, Mr. Knight Guy!")
+                    sleep(sec)
+                    break
+            # Misinput
+            else:
+                print(f"\n{Ally}: Whuh- Sorry, say that again. I'm paying attention now.")
+                sleep(sec)
+                continue
 
+    # Rogue
+    elif Rogue == 1:
+        print(f"\n{Ally}: We've come so far and now we finally have moment to think. I suggest thinking about how you approach this lord\n"
+              "we hear so much about.")
+        sleep(sec)
+        print(f"\n{Ally}: Since we're here again, let me ask you something...")
+        sleep(sec)
+        print(f"\n{Ally}: Is there anything you fear?")
+        sleep(sec)
+        # Answer loop
+        while True:
+            # If you're honest, maybe you'll learn a bit more about Kanra
+            fear = input("\n [1.                   The dark. ]\n [2.                   Dragons. ]\n [3.                  Questions. ]\n"
+                         " [4.                Being alone. ]\n [5.                 Being lost. ]\n [6.             I fear nothing.]\n" 
+                         " [7. Why are you asking me this? ]\n [8.             Something else. ]\nHow do you answer?: ")
+            # The dark
+            if fear == "1":
+                print(f"\n{Ally}: Well, there are a lot of those spaces out in the world of adventuring, so I can't say if you're brave, foolish, or\n"
+                      "haven't outgrown that childhood fear.")
+                sleep(sec)
+                print(f"\n{Ally}: I can tell you this much, to find a way out you don't always gotta see where your going and as long as you keep moving,\n"
+                      "You'll always find the light. As long as you never give up, you'll find a way. Trust me, my lifestyle is testament to that.")
+                sleep(sec)
+                break
+            
+            # Dragons
+            elif fear == "2":
+                print(f"\n{Ally}: And you're an adventurer? Kind of silly to be dressed so galantly and fear the thing you're so associated to dealing with.\n"
+                      "No judgement here, they are formidable creatures and ideally you don't want to be on the wrong side of them.")
+                sleep(sec)
+                print(f"\n{Ally}: If we do run into one, you're odds are better jumping off a cliff and hoping for no injury than to try and withstand that\n"
+                      "hot breath. Don't even think about fighting it, even if you were to hurt it, they hold grudges hard. Do not get into draconic drama.")
+                sleep(sec)
+                break
+
+            # Questions
+            elif fear == "3":
+                print(f"\n{Ally}: hmm... Sarcasm? If you don't want to tell I won't pry.")
+                sleep(sec)
+                break
+
+            # Being alone (Kanra's fear)
+            elif fear == "4":
+                print(f"\n{Ally}: That's a hard fear for an adventurer to have... I hope it's not the sole reason we're allied up, cause for-hires are not\n"
+                      "typically motivated by friendship, much of it is self-centered, from what I see.")
+                sleep(sec)
+                print(f"\n{Ally}: I would know, cause that's what I'm afraid of. It's why I was stuck inside the pub in the first place.")
+                sleep(sec)
+                print(f"\n{Ally}: Everyone is there, someone would know I went missing. People would also remember my stories and I wouldn't be forgotten.")
+                sleep(sec)
+                print(f"\n{Ally}: When you live away from the grid and you have no family line to etch your name in the pages of history, it's like true\n"
+                      "death to never be remember; You will have never been.")
+                sleep(sec)
+                print(f"\nYou tell {Ally} that if no one remembers her, at least you will.")
+                sleep(sec)
+                print("You also tell her that if you don't remember her, the footprint she's already left on the world will.")
+                sleep(sec)
+                print(f"\n{Ally}: You're right... ugh, sorry for dumping that on you, but seeing we made it this far and you didn't turn tail and run or\n"
+                      "give up on this quest, made me feel as if you could take what I had to say.")
+                sleep(sec)
+                print(f"\n{Ally}: Thanks for being such a great listener, {Player_Name}.")
+                sleep(sec)
+                break
+
+            # Being lost
+            elif fear == "5":
+                print(f"\n{Ally}: Interesting... Seeing as you've found the way to this point, I'd argue you do well to know where you are. Not a bad\n"
+                      "thing I suppose, but keep in mind, the world is finite. You'll always find a way, sometimes a shortcut!")
+                sleep(sec)
+                print(f"\n{Ally}: For that let me tell you mine, I trust you enough... I can't be alone; I dread it constantly.")
+                sleep(sec)
+                print(f"\n{Ally}: It's why I lurk in the pub and work for hire.")
+                sleep(sec)
+                print(f"\n{Ally}: Everyone is there, someone would know I went missing. People would also remember my stories and I wouldn't be forgotten.")
+                sleep(sec)
+                print(f"\n{Ally}: When you live away from the grid and you have no family line to etch your name in the pages of history, it's like true\n"
+                      "death to never be remember; You will have never been.")
+                sleep(sec)
+                print(f"\nYou tell {Ally} that if no one remembers her, at least you will.")
+                sleep(sec)
+                print("You also tell her that if you don't remember her, the footprint she's already left on the world will.")
+                sleep(sec)
+                print(f"\n{Ally}: You're right... ugh, sorry for dumping that on you, but seeing we made it this far and you didn't turn tail and run or\n"
+                      "give up on this quest, made me feel as if you could take what I had to say.")
+                sleep(sec)
+                print(f"\n{Ally}: Thanks for being such a great listener, {Player_Name}.")
+                sleep(sec)
+                break
+
+            # "I fear nothing"
+            elif fear == "6":
+                print(f"\n{Ally}: I don't believe it, and if I'm going to believe it, maybe you haven't found what you're afraid of yet.")
+                sleep(sec)
+                print(f"\n{Ally}: I know I never used to be afraid, but when I was swept away from my family, something weeded it's way into my heart.")
+                sleep(sec)
+                print(f"\n{Ally}: I was alone. Truly out there on my own. Didn't know if I could even trust myself, but I figured out things in the pub.")
+                sleep(sec)
+                print(f"\n{Ally}: Everyone is there, someone would know I went missing. People would also remember my stories and I wouldn't be forgotten.")
+                sleep(sec)
+                print(f"\n{Ally}: When you live away from the grid and you have no family line to etch your name in the pages of history, it's like true\n"
+                      "death to never be remember; You will have never been.")
+                sleep(sec)
+                print(f"\nYou tell {Ally} that if no one remembers her, at least you will.")
+                sleep(sec)
+                print("You also tell her that if you don't remember her, the footprint she's already left on the world will.")
+                sleep(sec)
+                print(f"\n{Ally}: You're right... ugh, sorry for dumping that on you, but seeing we made it this far and you didn't turn tail and run or\n"
+                      "give up on this quest, made me feel as if you could take what I had to say.")
+                sleep(sec)
+                print(f"\n{Ally}: Thanks for being such a great listener, {Player_Name}.")
+                sleep(sec)
+                break
+
+            # "Why are you asking me this?"
+            elif fear == "7":
+                print(f"\n{Ally}: Just talking honestly, but practically speaking, whatever horror we see inside the castle could be bad, so I want to\n"
+                      "make sure you're prepared to face the situation ahead.")
+                sleep(sec)
+                continue
+
+            # Something else...
+            elif fear == "8":
+                print(f"\n{Ally}: You're saying it's beyond simple fears? Hmm, maybe you don't want to tell me, but I don't need to know.\n"
+                      "Just stay calm ahead, OK?")
+                sleep(sec)
+                break
+
+            # EXCEPTION HANDLING
+            else:
+                print(f"\n{Ally}: Uhh... You were mumbling, or I couldn't hear over your helmet. Could you repeat that?")
+                sleep(sec)
+                continue
+        print(f"After that question ends, you think to youself about who {Ally} is... You think about it for a bit.")
+        sleep(sec)
+        print(f"You get an idea. You tap on {Ally}'s shoulder and ask...")
+        sleep(sec)
+        # Question loop
+        while True:
+            question = input("\n [1. After the quest, can we stick together? ]\n [2.     What are you doing after this quest? ]")
+            # Sticking together
+            if question == "1":
+                print(f"\n{Ally}: I mean, if you're serious about it, and you don't die ahead, I wouldn't object... Let me think about it first...")
+                sleep(sec)
+                if fear == "4":
+                    print(f"\n{Ally}: Acknowledging what I said earlier, huh? I appreciate the thought... I really do...")
+                    sleep(sec)
+                break
+            # After the quest
+            elif question == "2":
+                print(f"\n{Ally}: To be frank, I don't know. Living life from things of the past isn't where I like to dwell, and I can't be sure\n"
+                      "what the future holds, only in the present am I most capable of making choice and altering the future.")
+                sleep(sec)
+                print(f"\n{Ally}: If I had to guess, I'd take my earnings from our agreement and try to do good for the lesser out there.")
+                break
+            # Misinput
+            else:
+                print(f"\n{Ally}: Oh, uh, what did you say?")
+                sleep(sec)
+                continue
+    print("\nYou are about halfway there when suddenly, the ground rumbles violently...")
+    sleep(sec)
+    print("\nIs it an earthquake? shift of some kind?")
+    sleep(sec)
+    print("\nNo... It's worse...")
+    sleep(sec)
+    print("\nFrom behind you about 500 feet away, a booming cry of a monster, the dragon alerts you of your predicament.")
+    sleep(sec)
+    print("\nDread grips you as you see it is tearing it's way towards you.")
+    sleep(sec)
+    print("\nThere is no doubt in your mind... It is time to run.")
+    sleep(sec)
+    # Chase sequence goes here
+    print(utils.UnderLN("TO BE CONTINUED"))
+    os._exit(200)
+    
 # Fight the knights
 def ruins_fight():
     global sword, Scary_axe, rations, Chef, Rogue, Ally, Player_Name, sec, Stick, lives, lives_max, Werewolf
