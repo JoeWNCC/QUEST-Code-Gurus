@@ -10,7 +10,7 @@ import QUEST
 # below to a method from the QUEST library. The starting area is
 # QUEST.drab_town()
 
-
+# EXAMPLE: QUEST.property_name = 0 or 1/true or false/"string value"
 
 # ! WARNING !
 # If you preset the ally status for Chef and Rogue, their names will

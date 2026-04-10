@@ -397,6 +397,13 @@ def wood_woods_day_has_map():
 # Start of Wood Woods
 def wood_woods_day_trail():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+    # Debug Info
+    if DEBUG == True:
+        print("\n================= DEBUGGING =================\n")
+        print(f"DEBUG: sword={sword}, has_map={has_map}, rations={rations}, Rogue={Rogue}, Chef={Chef}, Lives={lives}")
+        print("\n================= DEBUGGING =================\n")
+
     print("As you walk amongst the forest aimlessly, you find a nice looking stick and think about"
           " how you may need a torch if it gets dark out.\n You found some space for it in your pack and"
           " kept on your merry way.")
@@ -659,6 +666,7 @@ def wood_woods_night():
         print("\n================= DEBUGGING =================\n")
         print(f"DEBUG: sword={sword}, has_map={has_map}, rations={rations}, Rogue={Rogue}, Chef={Chef}, Lives={lives}")
         print("\n================= DEBUGGING =================\n")
+
     os.system('cls' if os.name == 'nt' else 'clear')
     print(utils.UnderLN("\nWood Woods Night"))
     sleep(sec)
@@ -904,6 +912,13 @@ def wood_woods_night_torch():
 # Fight method
 def wood_woods_wolf():
     global sword, Scary_axe, rations, Rogue, Chef, Ally, Player_Name, lives, sec, Stick, Werewolf
+
+    # Debug Info
+    if DEBUG == True:
+        print("\n================= DEBUGGING =================\n")
+        print(f"DEBUG: sword={sword}, has_map={has_map}, rations={rations}, Rogue={Rogue}, Chef={Chef}, Lives={lives}")
+        print("\n================= DEBUGGING =================\n")
+
     while True:
         # Menus/Actions
         # ================ You have weapon/or Stick ================ #
@@ -1295,6 +1310,13 @@ def wood_woods_wolf():
 # Night Route
 def wood_woods_night_dark():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+    # Debug Info
+    if DEBUG == True:
+        print("\n================= DEBUGGING =================\n")
+        print(f"DEBUG: sword={sword}, has_map={has_map}, rations={rations}, Rogue={Rogue}, Chef={Chef}, Lives={lives}")
+        print("\n================= DEBUGGING =================\n")
+    
     print("The trail goes ever on. You try to count the time that's passed since you embarked from camp but with\n"
           "the sun down, there's no point in trying.")
     sleep(sec)
@@ -1459,6 +1481,13 @@ def wood_woods_night_dark():
 # Cave
 def cave():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+    # Debug Info
+    if DEBUG == True:
+        print("\n================= DEBUGGING =================\n")
+        print(f"DEBUG: sword={sword}, has_map={has_map}, rations={rations}, Rogue={Rogue}, Chef={Chef}, Lives={lives}")
+        print("\n================= DEBUGGING =================\n")
+
     print(utils.UnderLN("The Cave"))
     sleep(sec)
     print("\nThe darkness in front of you grows, the light from behind recedes. At this point in the quest, the path is a mystery.")
@@ -1487,6 +1516,13 @@ def cave():
 def caveFight():
     global sword, rations, Chef, Ally, Player_Name, sec, Stick, lives, Neck_Cloth, enemy_health
     os.system('cls' if os.name == 'nt' else 'clear')
+
+    # Debug Info
+    if DEBUG == True:
+        print("\n================= DEBUGGING =================\n")
+        print(f"DEBUG: sword={sword}, has_map={has_map}, rations={rations}, Rogue={Rogue}, Chef={Chef}, Lives={lives}")
+        print("\n================= DEBUGGING =================\n")
+    
     print("...")
     sleep(sec)
     print("\nSomething is wrong... You're being followed.")
@@ -1945,6 +1981,12 @@ def ruins():
     # variables we work with
     global sword, rations, Rogue, Chef, Ally, Player_Name, sec, Scary_axe
 
+    # Debug Info
+    if DEBUG == True:
+        print("\n================= DEBUGGING =================\n")
+        print(f"DEBUG: sword={sword}, has_map={has_map}, rations={rations}, Rogue={Rogue}, Chef={Chef}, Lives={lives}")
+        print("\n================= DEBUGGING =================\n")
+
     os.system('cls' if os.name == 'nt' else 'clear')
     print(utils.UnderLN("Ruins"))
     sleep(sec)
@@ -2139,6 +2181,13 @@ def ruins():
 # Ruins continued
 def ruins_2():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+    # Debug Info
+    if DEBUG == True:
+        print("\n================= DEBUGGING =================\n")
+        print(f"DEBUG: sword={sword}, has_map={has_map}, rations={rations}, Rogue={Rogue}, Chef={Chef}, Lives={lives}")
+        print("\n================= DEBUGGING =================\n")
+
     sleep(sec)
     print("After getting through the gate, before you is a bridge, innumeral miles long, but still within decent walking distance.\n"
           "It's a straight shot to this castle with seemingly no challenge.")
@@ -2156,14 +2205,15 @@ def ruins_2():
         print(f"\n{Ally}: What do you look like under all that shiny armor?")
         sleep(sec)
         # Answer loop
+        identity = input("\n [1.     A guy. ]\n [2.     A gal. ]\n [3. Not human. ]\n [4.        ... ]"
+                         "\nHow do you answer?: ")
         while True:
-            identity = input("\n [1.     A guy. ]\n [2.     A gal. ]\n [3. Not human. ]\n [4.      ... ]\nHow do you answe?: ")
             # A guy
             if identity == "1":
                 print(f"\n{Ally}: Ah yes, maybe this questions was too silly to ask. I can't imagine anyone else under that armor, but I wouldn't\n"
                       "object to anyone else going on adventures, I mean, I'm a cook and I'm out here risking my life for a yummy leaf. Good greif!")
                 sleep(sec)
-                print("I can't imagine anyone else under that armor, but I wouldn't object to anyone else going on adventures, I mean, I'm a cook and\n"
+                print(f"{Ally}: \nI can't imagine anyone else under that armor, but I wouldn't object to anyone else going on adventures, I mean, I'm a cook and\n"
                       "I'm out here risking my life for a yummy leaf for my 'all-spice'. Good greif!")
                 sleep(sec)
                 break
@@ -2188,7 +2238,7 @@ def ruins_2():
                 break
             # (No answer)
             elif identity == "4":
-                print(f"\n{Ally}: ")
+                print(f"\n{Ally}: Alright, uh- Fine then. Keep your secrets... Maybe I should just take your helmet off myself...")
                 sleep(sec)
                 break
             # EXCEPTION HANDLING
@@ -2196,13 +2246,15 @@ def ruins_2():
                 print(f"\n{Ally}: Sorry, I saw a weird looking bird in the sky. What did you say?")
                 sleep(sec)
                 continue
-        print(f"After that question ends, you think to youself about who {Ally} is... You think about it for a bit.")
+        
+        print(f"\nAfter that question ends, you think to youself about who {Ally} is... You think about it for a bit.")
         sleep(sec)
         print(f"You get an idea. You tap on {Ally}'s shoulder and ask...")
         sleep(sec)
         # Question loop
+        question = input("\n [1.       Anything you like besides cooking? ]\n [2. PLEASE tell me what this 'All-Spice' is! ]"
+                         "\nWhat do you say?: ")
         while True:
-            question = input("\n [1.       Anything you like besides cooking? ]\n [2. PLEASE tell me what this 'All-Spice' is! ]")
             # Likes besides cooking
             if question == "1":
                 print(f"\n{Ally}: Hmmm... I love cooking, but if I were to never touch cookware again, I would be SUPER invested in\n"
@@ -2212,20 +2264,21 @@ def ruins_2():
                 sleep(sec)
                 break
             # What is the 'all-spice'
-            elif question == "2":
-                if identity == "3" or "2" or "1":
+            if question == "2":
+                if identity == "4":
+                    print(f"\n{Ally}: You didn't reveal your secret, so I won't reveal mine. No hard feelings, Mr. Knight Guy!")
+                    sleep(sec)
+                    break
+                elif identity == "3" or "2" or "1":
                     print(f"\n{Ally}: Ok, since you were honest with me about MY burning question, I'll be honest too, since we've\n"
                           "survived this far..")
                     sleep(sec)
                     print(f"\n{Ally}: This all-spice has a name. It's leaves are a vibrant yellow, serrated pattern of the edges, and\n"
-                         "when ground up, has the sweetest aroma you've ever smelled.")
+                         "when ground up, has the sweetest aroma you've ever smelled... the Anima Mederi.")
                     sleep(sec)
                     print(f"\n{Ally}: You'll never need sugar or cocoa again- or so the legend goes... I know it's real though! You have to believe me!")
                     break
-                else:
-                    print(f"\n{Ally}: You didn't reveal your secret, so I won't reveal mine. No hard feelings, Mr. Knight Guy!")
-                    sleep(sec)
-                    break
+                
             # Misinput
             else:
                 print(f"\n{Ally}: Whuh- Sorry, say that again. I'm paying attention now.")
@@ -2244,8 +2297,8 @@ def ruins_2():
         # Answer loop
         while True:
             # If you're honest, maybe you'll learn a bit more about Kanra
-            fear = input("\n [1.                   The dark. ]\n [2.                   Dragons. ]\n [3.                  Questions. ]\n"
-                         " [4.                Being alone. ]\n [5.                 Being lost. ]\n [6.             I fear nothing.]\n" 
+            fear = input("\n [1.                   The dark. ]\n [2.                    Dragons. ]\n [3.                  Questions. ]\n"
+                         " [4.                Being alone. ]\n [5.                 Being lost. ]\n [6.              I fear nothing.]\n" 
                          " [7. Why are you asking me this? ]\n [8.             Something else. ]\nHow do you answer?: ")
             # The dark
             if fear == "1":
@@ -2364,13 +2417,14 @@ def ruins_2():
                 print(f"\n{Ally}: Uhh... You were mumbling, or I couldn't hear over your helmet. Could you repeat that?")
                 sleep(sec)
                 continue
-        print(f"After that question ends, you think to youself about who {Ally} is... You think about it for a bit.")
+        print(f"\nAfter that question ends, you think to youself about who {Ally} is... You think about it for a bit.")
         sleep(sec)
         print(f"You get an idea. You tap on {Ally}'s shoulder and ask...")
         sleep(sec)
         # Question loop
         while True:
-            question = input("\n [1. After the quest, can we stick together? ]\n [2.     What are you doing after this quest? ]")
+            question = input("\n [1.  After the quest, can we stick together? ]\n [2.     What are you doing after this quest? ]"
+                             "\nWhat do you say?: ")
             # Sticking together
             if question == "1":
                 print(f"\n{Ally}: I mean, if you're serious about it, and you don't die ahead, I wouldn't object... Let me think about it first...")
@@ -2391,26 +2445,36 @@ def ruins_2():
                 print(f"\n{Ally}: Oh, uh, what did you say?")
                 sleep(sec)
                 continue
+
     print("\nYou are about halfway there when suddenly, the ground rumbles violently...")
     sleep(sec)
     print("\nIs it an earthquake? shift of some kind?")
     sleep(sec)
     print("\nNo... It's worse...")
     sleep(sec)
-    print("\nFrom behind you about 500 feet away, a booming cry of a monster, the dragon alerts you of your predicament.")
+    print("\nFrom behind you about 500 feet away, a booming cry of a monster, the dragon alerts you of your danger.")
     sleep(sec)
     print("\nDread grips you as you see it is tearing it's way towards you.")
     sleep(sec)
     print("\nThere is no doubt in your mind... It is time to run.")
     sleep(sec)
+    input("\nPress enter to continue: ")
     # Chase sequence goes here
-    print(utils.UnderLN("TO BE CONTINUED"))
+    print("")
+    sleep(sec)
     os._exit(200)
     
 # Fight the knights
 def ruins_fight():
     global sword, Scary_axe, rations, Chef, Rogue, Ally, Player_Name, sec, Stick, lives, lives_max, Werewolf
     os.system('cls' if os.name == 'nt' else 'clear')
+
+    # Debug Info
+    if DEBUG == True:
+        print("\n================= DEBUGGING =================\n")
+        print(f"DEBUG: sword={sword}, has_map={has_map}, rations={rations}, Rogue={Rogue}, Chef={Chef}, Lives={lives}")
+        print("\n================= DEBUGGING =================\n")
+
     Scaed = 2
     Faer = 2
     defense = 0
@@ -2681,6 +2745,13 @@ def ruins_fight():
 # Find a new path
 def ruins_alt():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+    # Debug Info
+    if DEBUG == True:
+        print("\n================= DEBUGGING =================\n")
+        print(f"DEBUG: sword={sword}, has_map={has_map}, rations={rations}, Rogue={Rogue}, Chef={Chef}, Lives={lives}")
+        print("\n================= DEBUGGING =================\n")
+
     print(utils.UnderLN("Ruins Alt Path"))
     sleep(sec)
     print("\nYou're not sure where you are going. All you really can do is follow the walls and take the turns that bring\n" \
