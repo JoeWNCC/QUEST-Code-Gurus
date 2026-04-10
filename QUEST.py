@@ -2204,9 +2204,9 @@ def ruins_2():
         print(f"\n{Ally}: What do you look like under all that shiny armor?")
         sleep(sec)
         # Answer loop
-        identity = input("\n [1.     A guy. ]\n [2.     A gal. ]\n [3. Not human. ]\n [4.        ... ]"
-                         "\nHow do you answer?: ")
         while True:
+            identity = input("\n [1.     A guy. ]\n [2.     A gal. ]\n [3. Not human. ]\n [4.        ... ]"
+                         "\nHow do you answer?: ")
             # A guy
             if identity == "1":
                 print(f"\n{Ally}: Ah yes, maybe this questions was too silly to ask. I can't imagine anyone else under that armor, but I wouldn't\n"
@@ -2251,9 +2251,9 @@ def ruins_2():
         print(f"You get an idea. You tap on {Ally}'s shoulder and ask...")
         sleep(sec)
         # Question loop
-        question = input("\n [1.       Anything you like besides cooking? ]\n [2. PLEASE tell me what this 'All-Spice' is! ]"
-                         "\nWhat do you say?: ")
         while True:
+            question = input("\n [1.       Anything you like besides cooking? ]\n [2. PLEASE tell me what this 'All-Spice' is! ]"
+                         "\nWhat do you say?: ")
             # Likes besides cooking
             if question == "1":
                 print(f"\n{Ally}: Hmmm... I love cooking, but if I were to never touch cookware again, I would be SUPER invested in\n"
@@ -2606,7 +2606,7 @@ def ruins_2():
                 sleep(sec)
                 input("Press enter to continue: ")
                 sanctum()
-                break
+                return
         # KANRA (Rogue) option
         elif escape2 == "3" and Rogue == 1:
             print("You cry out to Kanra to try and hurt the beast and stop the flames!")
@@ -2624,7 +2624,7 @@ def ruins_2():
             sleep(sec)
             input("Press enter to continue: ")
             sanctum()
-            break
+            return
         # Handle exceptions (Continue statement)
         else:
             if Rogue == 1:
@@ -2633,9 +2633,6 @@ def ruins_2():
                 print("\n- You can only choose 1 or 2!\n")
             continue
     
-    if escape2 == "2" or "3":
-        # This assures a proper end to the method so it concludes these options.
-        return
     print("\nYou take your chance and run to the exit.")
     sleep(sec)
     print("\nSuddenly, from the skies...")
