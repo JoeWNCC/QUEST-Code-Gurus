@@ -2188,10 +2188,10 @@ def ruins_2():
         print("\n================= DEBUGGING =================\n")
 
     sleep(sec)
-    print("After getting through the gate, before you is a bridge, innumeral miles long, but still within decent walking distance.\n"
+    print("After getting through the gate, before you is a bridge innumeral miles long, but still within decent walking distance.\n"
           "It's a straight shot to this castle with seemingly no challenge.")
     sleep(sec)
-    print("\nLooks like you're nearing the end. Any vigor that might have been deminished is gathered once again. You begin jogging\n"
+    print("\nLooks like you're nearing the end. Any vigor that might have been diminished is gathered once again. You begin jogging\n"
           "down it with no hesitation.")
     sleep(sec)
     # === Ally Dialogue Time === #
@@ -2296,7 +2296,7 @@ def ruins_2():
         while True:
             # If you're honest, maybe you'll learn a bit more about Kanra
             fear = input("\n [1.                   The dark. ]\n [2.                    Dragons. ]\n [3.                  Questions. ]\n"
-                         " [4.                Being alone. ]\n [5.                 Being lost. ]\n [6.              I fear nothing.]\n" 
+                         " [4.                Being alone. ]\n [5.                 Being lost. ]\n [6.             I fear nothing. ]\n" 
                          " [7. Why are you asking me this? ]\n [8.             Something else. ]\nHow do you answer?: ")
             # The dark
             if fear == "1":
@@ -2619,7 +2619,7 @@ def ruins_2():
             sleep(sec)
             print("\nVery quickly, your party gathers itself inside the threshold of the castle, shut down, and then bar the massive door.")
             sleep(sec)
-            print(f"{Ally}: {Player_Name}, there is no way I'm forgetting a this adventure or a guy like you after what just happened... We are so lucky to"
+            print(f"{Ally}: {Player_Name}, there is no way I'm forgetting this adventure or a guy like you after what just happened... We are so lucky to"
                   "\nstill be alive... That means you owe me a pint!")
             sleep(sec)
             input("Press enter to continue: ")
