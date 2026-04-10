@@ -15,6 +15,11 @@ I spent a lot of time trying to iron out errors in code I made from Spring 2025 
 
 I've taken some liberties from the flowchart to add new things. I would say it's important to use your reference as solely ideas rather than directions, so you are allowed to be creative beyond the initial planning faze. Of course, if you were working with other people on the same project, that would need to be communicated with everyone, but I don't have to worry about that as a perk of being a solo dev.
 
-## Spring 2026
+## SPRING 2026
 ### WEEK 4
 I've started adding onto this now, furthering my goal of getting to the sanctum. What I have today with the inclusion of the beginning of the ruins is far from finished as creating multiple paths and doing multiple things in this said past should matter towards the end game. Someone you talked to could influence a decision later, someone you helped could help you back, or someone you enraged could seek retribution. Given what I've already written into the game file, I think some characters deserve some love, so to ensure that this experience is rich, the ruins will be the culmination of all your past decisions finally catching up to you. Will you be able to stand strong with or against them or will they take you down? That will all be up to you soon!
+
+### WEEK 13
+I know there has been a considerable amount of time since my last update, but I can confirm I should be finishing this before the end of this semester I am in! I ended up taking more time for the future areas of this console adventure game so I could give some meat to the story in my best attempt to hopefully captivate anyone willing to test this. Since I could call this my first attempt at a _Story game_, I should at least try more for that part. I feel like moving forward in this project furthers my goal of eventually writing a story game. I need to be able to mash up some of my fixations, such as Earthbound by Nintendo, Zelda games, the Dark Souls series by Capcom, Undertale and Deltarune by Toby Fox. Frankly, this list could go on for ages; I love so many of these games stylisticly and story-wise.
+
+We're coming closer to a close, which means I can try out Godot. It's very exciting!
