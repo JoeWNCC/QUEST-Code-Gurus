@@ -60,7 +60,6 @@ else:
     sec = 3
 # ------------------------------------------- #
 
-
 # ----- CHANCE FUNCTIONS ----- #
 # 50%
 def chance_50():
@@ -2181,7 +2180,7 @@ def ruins():
 # Ruins continued
 def ruins_2():
     os.system('cls' if os.name == 'nt' else 'clear')
-
+    global lives, lives_max, Rogue
     # Debug Info
     if DEBUG == True:
         print("\n================= DEBUGGING =================\n")
@@ -2284,7 +2283,6 @@ def ruins_2():
                 print(f"\n{Ally}: Whuh- Sorry, say that again. I'm paying attention now.")
                 sleep(sec)
                 continue
-
     # Rogue
     elif Rogue == 1:
         print(f"\n{Ally}: We've come so far and now we finally have moment to think. I suggest thinking about how you approach this lord\n"
@@ -2445,7 +2443,8 @@ def ruins_2():
                 print(f"\n{Ally}: Oh, uh, what did you say?")
                 sleep(sec)
                 continue
-
+    
+    # Pick up the main story again
     print("\nYou are about halfway there when suddenly, the ground rumbles violently...")
     sleep(sec)
     print("\nIs it an earthquake? shift of some kind?")
@@ -2459,11 +2458,220 @@ def ruins_2():
     print("\nThere is no doubt in your mind... It is time to run.")
     sleep(sec)
     input("\nPress enter to continue: ")
+    os.system('cls' if os.name == 'nt' else 'clear')
+
     # Chase sequence goes here
-    print("")
+    print(f"\n- = [ ESCAPE ] = -")
     sleep(sec)
-    os._exit(200)
+    print("\nYou turn around a kick off the ground as fast as you can. You need to get away, no matter what.")
+    sleep(sec)
+    print("\nIn front of you, the bridge begins to collapse. You need to get over the gaps that form!")
+    sleep(sec)
+    print("\nAs you run up, a near pillar to the left begins to fall down.")
+    sleep(sec)
+    print("\nWith no time to think, you...")
+    sleep(sec)
+    # First escape choices
+    while True:
+        escape1 = input("\n [1.        Run to the left and jump over ]"
+                        "\n [2.           Run faster down the center ]"
+                        "\n [3. Run to the right and try to clear it ]"
+                        "\nYour choice [1, 2 or 3]: ")
+        # Go left to pillar base (100% Success)
+        if escape1 == "1":
+            print("\nYou direct yourself to the base where it is falling, away from danger and quickly vault"
+                  "over the fallen pillar.")
+            sleep(sec)
+            break
+        # Run faster down the center (75% success)
+        elif escape1 == "2":
+            print("\nNo time for silly ideas. you NEED to go faster!")
+            sleep(sec)
+            print("\nYou run with all your might, pillar coming ever nearer and...")
+            # Roll for chance
+            chance = chance_75()
+            # Fail
+            if chance == 1:
+                print("\nYou hit your head on the top pillar and are immediately flipped on your back.")
+                sleep(sec)
+                lives -= 1
+                print(f"Health: {lives}/{lives_max}")
+                sleep(sec)
+                if lives < 1:
+                    print("\nUnfortunately, the pillar has fallen on top of you. You cannot fight your way out under the weight.")
+                    sleep(sec)
+                    print("\nThere is no way to save you. You can only wait for your demise with the ever approaching dragon.")
+                    sleep(sec)
+                    game_over()
+                    break
+                else:
+                    print("\nAlas, you cleared the obsticle. You get up and hurry down the bridge!")
+                    sleep(sec)
+                    break
+            # Success
+            elif chance > 1:
+                
+                print("\nIn the nick of time, you manage to pass under the massive structure, maintaining quick pace.")
+                sleep(sec)
+                break
+        # Go Right to give more room (15% success)
+        elif escape1 == "3":
+            print("\nYou got to get further away from the middle if you're gonna clear this!")
+            sleep(sec)
+            print("\nYou turn right and realize that you lose forward momentum. The pillar is inches away from your head!")
+            sleep(sec)
+            # Chance!
+            chance = chance_75()
+            # Success
+            if chance == 1:
+                
+                print("\nBy some miracle, you manage to clear it.")
+                sleep(sec)
+                print("\nKeep running, it's not over!")
+                break
+            # Fail
+            elif chance > 1:
+                print("\nYou've been struck and laid flat on the floor!")
+                lives -=1
+                sleep(sec)
+                print(f"Health: {lives}/{lives_max}")
+                sleep(sec)
+                if lives < 1:
+                    print("\nUnfortunately, the pillar has fallen on top of you. You cannot fight your way out under the weight.")
+                    sleep(sec)
+                    print("\nThere is no way to save you. You can only wait for your demise with the ever approaching dragon.")
+                    sleep(sec)
+                    game_over()
+                    break
+                else:
+                    print("\nYou're not down yet! You clambor your way back to your feet and continue your dash for life.")
+                    sleep(sec)
+                    break
+            break
+        # Exception Handling (continue statement)
+        else:
+            print("\n- You can only choose 1, 2, or 3!\n")
+            continue
     
+    print("\nYou're not done yet!")
+    sleep(sec)
+    print("\nFrom behind, a fiery wall of flames envelopes the bridge!")
+    sleep(sec)
+    print("\nYou notice the entrance is JUST up ahead!")
+    sleep(sec)
+    print("\nDespite little time, you eye some options.")
+    # Second escape choices
+    while True:
+        if Rogue == 1:
+            escape2 = input("\n [1. Dive for the boulder, wait for flames to pass! ]"
+                            "\n [2.     Endure the flames, get to the castle gate! ]"
+                            "\n [3.    Throw a dagger into the beasts eye! (KANRA) ]"
+                            "\nYour choice [1, 2, or 3]: ")
+        else:
+            escape2 = input("\n [1. Dive for the boulder, wait for flames to pass! ]"
+                            "\n [2.     Endure the flames, get to the castle gate! ]"
+                            "\nYour choice [1 or 2]: ")
+        # Safe Option
+        if escape2 == "1":
+            print("\nIt's a no brainer, take cover! There  is no way you'd want to face that flaming cloud of death!")
+            sleep(sec)
+            print("\nNot soon after your dive turns into a roll, the flames catch up and wash over above you.")
+            sleep(sec)
+            print("\nAfter a long 30 seconds, the flames finally stop, and so does the stomping.")
+            sleep(sec)
+            break
+        # Skips the sanctum depths if you can survive the flames!
+        elif escape2 == "2":
+            print("\nYou breathe in, and then out...")
+            sleep(sec)
+            print("\nYou kick your legs forward as fast as you can and tighten your muscles as much as you can... You're gonna get to that gate...")
+            sleep(sec)
+            print("\nVery quickly, all you can see is the bright orange of the fire and are running blindly with not a clue your distance to the gate")
+            sleep(sec)
+            print("\nYour whole body seizes in pain, your skin crawling inside your armor.")
+            lives -= 2
+            print(f"\nHealth Remaining: {lives}/{lives_max}")
+            if lives < 1:
+                    print("\nIt's too much... You can't feel your legs anymore and you can't even tell if you're still running!")
+                    sleep(sec)
+                    print("\nYou can't breathe within the smoke and you can't keep moving as the pain is too great. It's over...")
+                    sleep(sec)
+                    game_over()
+                    break
+            else:
+                print("\nThrough courage and sheer will to live, you fight your way through the pain and the flames to the other side and seal the door ahead\n"
+                      "behind you!")
+                sleep(sec)
+                print("\nPromptly, you begin rolling on the floor to put out any of the remaining flames that still licked your armor.")
+                sleep(sec)
+                input("Press enter to continue: ")
+                sanctum()
+                break
+        # KANRA (Rogue) option
+        elif escape2 == "3" and Rogue == 1:
+            print("You cry out to Kanra to try and hurt the beast and stop the flames!")
+            sleep(sec)
+            print(f"\n{Ally}: On it!")
+            sleep(sec)
+            print("\nWith absurdly superb precision, Kanra is able to stop the stream of fire headed your way with a keen shot to the dragons eye.")
+            sleep(sec)
+            print("\nThe monster belts out a cry that, you've no doubt reached all the way to Drab Town. Your helmet rings with its roar.")
+            sleep(sec)
+            print("\nVery quickly, your party gathers itself inside the threshold of the castle, shut down, and then bar the massive door.")
+            sleep(sec)
+            print(f"{Ally}: {Player_Name}, there is no way I'm forgetting a this adventure or a guy like you after what just happened... We are so lucky to"
+                  "\nstill be alive... That means you owe me a pint!")
+            sleep(sec)
+            input("Press enter to continue: ")
+            sanctum()
+            break
+        # Handle exceptions (Continue statement)
+        else:
+            if Rogue == 1:
+                print("\n- You can only choose 1, 2, or 3!\n")
+            else:
+                print("\n- You can only choose 1 or 2!\n")
+            continue
+    
+    if escape2 == "2" or "3":
+        # This assures a proper end to the method so it concludes these options.
+        return
+    print("\nYou take your chance and run to the exit.")
+    sleep(sec)
+    print("\nSuddenly, from the skies...")
+    sleep(sec)
+    print("\n ! CRASH !")
+    sleep(sec)
+    print("\nThe dragon lands in front of the gate and between you two, the bridge breaks in two!")
+    sleep(sec)
+    print("\nThe beast prepares to lunge at you. It seems like you finally ran out of options...")
+    sleep(sec)
+    print("\nOr have you?..")
+    # Final Escape option (I may change this later based on story direction, which should explain my if statement here)
+    escape3 = input("\n [1. Jump into the void below ]"
+                    "\nChoose: ")
+    # Jump off the bridge.
+    if escape3 == "1":
+        print("\nYou take in what may be your final breath, and dash for the edge of the broken bridge.")
+        sleep(sec)
+        print("\nThen, you leapt.")
+        sleep(sec)
+        print("\nAs you plummet, you watch the world above wash away, and into darkness you go, swallowed by the void.")
+        sleep(sec)
+        input("\nPress enter to continue: ")
+        sanctum_depths()
+        return
+    else: # Same thing for right now.
+        print("\nYou take in what may be your final breath, and dash for the edge of the broken bridge.")
+        sleep(sec)
+        print("\nThen, you leapt.")
+        sleep(sec)
+        print("\nAs you plummet, you watch the world above wash away, and into darkness you go, swallowed by the void.")
+        sleep(sec)
+        input("\nPress enter to continue: ")
+        sanctum_depths()
+        return
+
 # Fight the knights
 def ruins_fight():
     global sword, Scary_axe, rations, Chef, Rogue, Ally, Player_Name, sec, Stick, lives, lives_max, Werewolf
@@ -2919,7 +3127,14 @@ def ruins_alt():
             
 # ========== SANCTUM ========== #
 # Sanctum
+def sanctum_depths():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(utils.UnderLN("Sanctum Depths"))
+    print("\nCOMING SOON!")
+
 def sanctum():
+    # You can get here further into the sanctum, OR conversely if you 
+    # have enough health to endure the dragon flames
     os.system('cls' if os.name == 'nt' else 'clear')
     print(utils.UnderLN("Sanctum"))
     print("\nCOMING SOON!")
