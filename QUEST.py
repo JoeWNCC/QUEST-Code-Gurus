@@ -3125,10 +3125,148 @@ def ruins_alt():
 # ========== SANCTUM ========== #
 # Sanctum
 def sanctum_depths():
+    global Ally, Rogue, Chef, lives, lives_max, Player_Name
     os.system('cls' if os.name == 'nt' else 'clear')
     print(utils.UnderLN("Sanctum Depths"))
+    sleep(sec)
+    print("\n...")
+    sleep(sec)
+    print("\nYou begin to stir.")
+    sleep(sec)
+    print("\nAs you open your eyes, you begin to think you can't open them, only to realize it is incredibly dark wherever\n"
+          "you ended up.")
+    sleep(sec)
+    print("\nYou stumble to your feet and turn back to see you've managed to break your fall through many lucky\n"
+          "but rough impacts with trees shown by all the broken foliage in the crater you made.")
+    sleep(sec)
+    # If you have an ally, print some text to let you know they're missing
+    if Rogue or Chef == 1:
+        print(f"\nThe thought of {Ally} made your heart stutter. You search around frantically calling {Ally}'s name to no\n"
+              "avail...")
+        sleep(sec)
+        print(f"\nYou can only hope they didn't have a worse fate than you.")
+        sleep(sec)
+    print("\nYou turn back around and search for anything that could help you.")
+    sleep(sec)
+    print("\nFortunately, there is a dim light ahead. It's sconces on the wall of a tunnel that seems to lead into the bowels\n"
+          "of the castle.")
+    sleep(sec)
+    print("\nIt seems to be the only perceivable way forward, so get to it!")
+    sleep(sec)
+    input("\nPress enter to continue: ")
+    os.system('cls' if os.name == 'nt' else 'clear')
+    sleep(sec)
+    print("\nAt the end of the tunnel is a series of extra tunnels and wider stretches that lead to who-knows-where. Along the\n"
+          "walls of this place are shelves with an opening of 7 by 2 feet. Some have boxes in them that you'd rather not open\n"
+          "and some valuable possessions alongside them.")
+    sleep(sec)
+    print("\nNearest to you is a shiny pouch of coins and a cluster of gemstones. Even in that small size its worth a fortune; a\n" \
+          "little extra coin for your quest troubles or a deadly trap.\n")
+    sleep(sec)
+
+    # Choice loop!
+    while True:
+        take_coin = input("[1.       Take it. ]\n[2. Don't Take it. ]\nWhat will you do? [1 or 2]: ")
+        # Remember, take_coin is a string input so when you want to reference it's value, do "1" or "2".
+        if take_coin == "1":
+            # Take the treasure
+            print("\nNo one here is gonna need it anymore; it's better in your use than just sitting there idly!")
+            sleep(sec)
+            print("\nAs a matter of fact, just take whatever you can carry. What's an adventure without treasure?")
+            sleep(sec)
+            break
+        elif take_coin == "2":
+            # Do not take the treasure
+            print("\nYou've been through too much to just assume things just work in your favour. Whether you prosper or not,\n"
+                  "this is beneficial to raising the chances of your survival.")
+            sleep(sec)
+            break
+        else:
+            # Handle exception
+            print("\n! Please choose 1 or 2. !\n")
+            continue
+
+    print("\nAs you move forward, there is a sensation that slowly, but surely grows but you can't pin it anywhere. Is it just\n"
+          "anxiety? dread?")
+    sleep(sec)
+    print("\nNo. It feels like it's all in your head. Maybe it is in your head or maybe something is trying to communicate with\n"
+          "you...")
+    sleep(sec)
+    print("\nJust keep moving forward. The sooner your out of here, the less this feeling is a problem.")
+    sleep(sec)
+    input("Press Enter to continue: ")
+    os.system('cls' if os.name == 'nt' else 'clear')
+    sleep(sec)
+    print("\nSome time passes. Probably between 30 minutes or an hour of walking and wading through the dank and wet supposed\n"
+              "catacomb/sewer-like interior.")
+    sleep(sec)
+    # Extra dialogue if you have a partner
+    if Chef or Rogue == 1:
+        print("\nSuddenly, you find something...")
+        sleep(sec)
+        print(f"\nUpon closer examination, it appears to be tattered peaces of {Ally}'s shirt.")
+        sleep(sec)
+        print("\nDid they get hurt? Is something wrong? Besides the questions, you know now that you are on the right track!")
+        sleep(sec)
+        print(f"\nSigns point to {Ally} traveling this path. Better follow it!")
+        sleep(sec)
+
+    print("\nYou finally come to something that looks very different. It's a cylindrical space with spiralling steps upward.")
+    sleep(sec)
+    print('\nAfter entering the center of the chamber, you can see light far up the top and what looks to be "not catacomb-\n' \
+          '-sewer architecture!" Keep moving!')
+    sleep(sec)
+    print("\nSuddenly...")
+    sleep(sec)
+    print("\nYou stumble around failing to hold steady. A voice, thought of as earlier delusions becomes livid.")
+    sleep(sec)
+    print("\nIt's clear now, that the sensation from earlier is a voice... Someone else's voice...")
+    sleep(sec)
+    print("\nPeople's voice...")
+    sleep(sec)
+    # Create a spaced out version of player name.
+    ghost_lingo_name = ""
+    for i in range(len(Player_Name)):
+        ghost_lingo_name += Player_Name[i] + " "
+
+    print(f"\n???: . . . {ghost_lingo_name}. . .")
+    sleep(sec)
+    print("\nYour skin goes cold.")
+    sleep(sec)
+    # Judgement!!!
+    if take_coin == "1":
+        # You took the coins earlier
+        print(f"\n???: . . . {ghost_lingo_name}. . . D o   y o u   r e a l i z e   w h a t   t a k i n g   f r o m   t h e\n"
+              "   d e a d   m e a n s   f o r   y o u r   s o u l ? . .")
+        sleep(sec)
+        print("\n???: Y o u   w i l l   s e e . . .")
+        sleep(sec)
+        input("\nPress enter to continue: ")
+        sanctum_depths_fight()
+        return
+    elif take_coin == "2":
+        # You did not take the coins earlier
+        print("\n???: . . .   T h o u g h   y o u   k n e w   n o t   i n   w h i c h   v a l u a b l e s   m e a n\n"
+              "   t o   t h e   d e a d ,   y o u   d i d   n o t   t a k e   w h a t   w a s   n o t   y o u r s .")
+        sleep(sec)
+        print(f"\n???: {ghost_lingo_name} . . .   Y o u r   t r u e   w i l l   h a s   b e e n   r e a l i z e d . . .")
+        sleep(sec)
+        print("\nAnd just like that, the spectral weight you've been carrying dropped. On top of feeling invigorated,\n"
+              "you feel that by acting for the good and conscious of others will always have merit. You feel realized.")
+        sleep(sec)
+        print("Keep moving forward; climb those stairs!")
+        sleep(sec)
+        input("Press enter to continue: ")
+        sanctum()
+        return
+
+# You'll fight ghosts here; I'll figure out how later
+def sanctum_depths_fight():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(utils.UnderLN("Sanctum Depths Fight"))
     print("\nCOMING SOON!")
 
+# Crucial area before finale
 def sanctum():
     # You can get here further into the sanctum, OR conversely if you 
     # have enough health to endure the dragon flames
